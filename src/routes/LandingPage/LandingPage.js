@@ -12,7 +12,7 @@ export default class LandingPage extends Component {
             </section>
             <section className="canonizeDescription">
             <p>Some convincing description of app and call to action here</p>
-            <button class="startButton">Start Your Canon</button>
+            <button className="startButton">Start Your Canon</button>
         </section>
         </main>
         </>

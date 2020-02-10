@@ -1,28 +1,28 @@
 import React, { Component } from 'react';
-import config from  '../../config';
+import CharacterApiService from '../../services/character-api-service';
+import UserCanonItem from '../../components/UserCanonItem/UserCanonItem';
+import UserExpandedItem from '../../components/UserExpandedItem/UserExpandedItem';
 
 export default class UserCanonPage extends Component {
     state = {
         error: null,
-        characters: []
+        characters: [],
+        character: {}
     }
 
+    changeSelectedCharacter = (char) => {
+        const characterIndex = this.state.characters.findIndex(character => character === char)
+        this.setState({
+            ...this.state,
+            character: this.state.characters[characterIndex]
+        })
+    }
     componentDidMount() {
-        fetch(`${config.API_ENDPOINT}/characters`, {
-                method: 'GET',
-                headers: {
-                    'content-type': 'applicaton/json'
-                },
-            })
-            .then(res => {
-                if(!res.ok) {
-                    throw new Error(res.statusText);
-                }
-                return res.json()
-            })
+       CharacterApiService.getCharacters()
             .then(res => {
                 this.setState({
-                    characters: res
+                    characters: res,
+                    character: res[0]
                 })
             })
             .catch(error => this.setState({
@@ -30,13 +30,15 @@ export default class UserCanonPage extends Component {
             }))
     }
     render() {
-        const characters = this.state.characters;
-        return <ul className="characterList">
-           {characters.map(character => {
-               const characterId = character.id
-               const characterName = character.character_name
-               return <li key={characterId}>{characterName}</li>
-           })}
+        return <>
+        <div className = "selectedCharacter">
+            <UserExpandedItem currentCharacter={this.state.character}/>
+        </div>
+        <ul className="characterList">
+           <UserCanonItem 
+           characters={this.state.characters}
+           changeSelectedCharacter={this.changeSelectedCharacter}/>
         </ul>
+        </>
     }
 }
