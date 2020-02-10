@@ -12,15 +12,17 @@ function App() {
         <Header />
       </header>
     <main>
+      <Switch>
         <Route
           exact
           path={'/'}
           component={LandingPage}
         />
-        {/*<Route
+        <Route
           path={'/myCanon'}
           component={UserCanonPage}
-        />*/}
+        />
+      </Switch>
       </main>
     </div>
   );
