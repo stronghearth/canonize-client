@@ -31,6 +31,10 @@ export default class UserCanonPage extends Component {
     }
     render() {
         return <>
+        <section>
+            <h2 className="userGreeting">Welcome, Canonizer!</h2>{/*implement user insert*/}
+            <p className="characterCount">You currently have {this.state.characters.length} characters in your canon.</p>
+        </section>
         <div className = "selectedCharacter">
             <UserExpandedItem currentCharacter={this.state.character}/>
         </div>
