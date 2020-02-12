@@ -2,12 +2,44 @@ import React, { Component } from 'react';
 import CharacterApiService from '../../services/character-api-service';
 import UserCanonItem from '../../components/UserCanonItem/UserCanonItem';
 import UserExpandedItem from '../../components/UserExpandedItem/UserExpandedItem';
+import AddCharacterForm from '../../components/AddCharcterForm/AddCharacterForm';
 
 export default class UserCanonPage extends Component {
-    state = {
+    
+    constructor(props) {
+        super(props)
+        this.state = {
         error: null,
         characters: [],
-        character: {}
+        character: {},
+        formOpen: false,
+    }
+    }
+
+    handleOpen = (e) => {
+        e.preventDefault()
+        this.setState({
+            formOpen: true
+        })
+    }
+
+    handleClose = (e) => {
+        e.preventDefault()
+        this.setState({
+            formOpen: false
+        })
+    }
+
+    renderCharacterForm = () => {
+        if (this.state.formOpen) {
+            return(
+                <>
+                <AddCharacterForm/>
+                <button onClick={(e) => this.handleClose(e)}>Close</button>
+                </>
+            )
+        }
+        return <></>
     }
 
     changeSelectedCharacter = (char) => {
@@ -17,6 +49,7 @@ export default class UserCanonPage extends Component {
             character: this.state.characters[characterIndex]
         })
     }
+
     componentDidMount() {
        CharacterApiService.getCharacters()
             .then(res => {
@@ -29,6 +62,7 @@ export default class UserCanonPage extends Component {
                 error: error.message
             }))
     }
+
     render() {
         return <>
         <section>
@@ -38,11 +72,14 @@ export default class UserCanonPage extends Component {
         <div className = "selectedCharacter">
             <UserExpandedItem currentCharacter={this.state.character}/>
         </div>
+        <button onClick={(e) => this.handleOpen(e)}>Add Character</button>
+        {this.renderCharacterForm()}
+        {this.state.characters.length === 0 ? <></> :
         <ul className="characterList">
            <UserCanonItem 
            characters={this.state.characters}
            changeSelectedCharacter={this.changeSelectedCharacter}/>
-        </ul>
+        </ul>}
         </>
     }
 }
