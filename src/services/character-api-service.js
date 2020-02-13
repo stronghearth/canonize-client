@@ -1,11 +1,13 @@
 import config from '../config';
+import TokenService from '../services/token-service'
 
 const CharacterApiService = {
     getCharacters() {
         return fetch(`${config.API_ENDPOINT}/characters`, {
             method: 'GET',
             headers: {
-                'content-type': 'applicaton/json'
+                'content-type': 'applicaton/json',
+                'authorization': `bearer ${TokenService.getAuthToken()}`
             },
         })
         .then(res => {
@@ -19,7 +21,8 @@ const CharacterApiService = {
         return fetch(`${config.API_ENDPOINT}/characters`, {
             method: 'POST',
             headers: {
-                'content-type': 'application/json'
+                'content-type': 'application/json',
+                'authorization': `bearer ${TokenService.getAuthToken()}`
             },
             body: JSON.stringify(
                 newCharacter

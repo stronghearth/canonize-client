@@ -1,6 +1,7 @@
 import React from 'react';
 import {Route, Switch} from 'react-router-dom';
 import Header from '../Header/Header';
+import PrivateRoute from '../utils/PrivateRoute'
 import LandingPage from '../../routes/LandingPage/LandingPage';
 import UserCanonPage from '../../routes/UserCanonPage/UserCanonPage';
 import './App.css';
@@ -18,7 +19,7 @@ function App() {
           path={'/'}
           component={LandingPage}
         />
-        <Route
+        <PrivateRoute
           path={'/myCanon'}
           component={UserCanonPage}
         />

@@ -54,8 +54,8 @@ export default class UserCanonPage extends Component {
        CharacterApiService.getCharacters()
             .then(res => {
                 this.setState({
-                    characters: res,
-                    character: res[0]
+                    characters: res || [],
+                    character: res[0] || {}
                 })
             })
             .catch(error => this.setState({
@@ -67,7 +67,7 @@ export default class UserCanonPage extends Component {
         return <>
         <section>
             <h2 className="userGreeting">Welcome, Canonizer!</h2>{/*implement user insert*/}
-            <p className="characterCount">You currently have {this.state.characters.length} characters in your canon.</p>
+            <p className="characterCount">You currently have {this.state.characters.length} character(s) in your canon.</p>
         </section>
         <div className = "selectedCharacter">
             <UserExpandedItem currentCharacter={this.state.character}/>
