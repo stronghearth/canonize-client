@@ -5,8 +5,8 @@ const CharacterContext = React.createContext({
     characters: [],
     character: {},
     error: null,
+    openRegister: false,
     logInFormOpen: false,
-    registerFormOpen: false,
     loggedIn: false,
     changeToLoggedInState: () => {},
     changeToLoggedOutState: () => {},
@@ -18,14 +18,13 @@ export default CharacterContext
 
 export class CharacterProvider extends Component {
     state = {
+        loggedIn: false,
+        logInFormOpen: false,
+        openRegister: false,
         characters: [],
         character: {},
         error: null,
-        loggedIn: false,
-        logInFormOpen: false,
-        registerFormOpen: false,
     }
-
     changeToLoggedInState = () => {
         this.setState({
             loggedIn: true
@@ -40,17 +39,17 @@ export class CharacterProvider extends Component {
 
     handleOpenLogInForm = () => {
         this.setState({
-            logInFormOpen: true
+            logInFormOpen: true,
+            openRegister: false
         })
     }
 
     handleOpenRegisterForm = () => {
-        console.log('yo!')
         this.setState({
-            registerFormOpen: true
+            openRegister: true,
+            logInFormOpen: false
         })
     }
-
     render() {
         const value = {
             characters: this.state.characters,
@@ -58,7 +57,7 @@ export class CharacterProvider extends Component {
             error: this.state.error,
             loggedIn: this.state.loggedIn,
             logInFormOpen: this.state.logInFormOpen,
-            registerFormOpen: this.registerFormOpen,
+            openRegister: this.state.openRegister,
             changeToLoggedInState: this.changeToLoggedInState,
             changeToLoggedOutState: this.changeToLoggedOutState,
             handleOpenLogInForm: this.handleOpenLogInForm,

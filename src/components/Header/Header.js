@@ -16,7 +16,6 @@ export default class Header extends Component {
         this.context.handleOpenLogInForm()
     }
     handleRegisterClick = () => {
-        console.log('I am clicked!')
         this.context.handleOpenRegisterForm()
     }
 

@@ -20,15 +20,17 @@ export default class LandingPage extends Component {
     }
 
     handleStartClick = () => {
-        console.log('I am clicked')
         this.context.handleOpenRegisterForm()
     }
 
     renderRegisterForm = () => {
-        console.log('hey!')
         return (
-            <RegistrationForm />
+            <RegistrationForm onRegistrationSuccess={this.handleRegisterSuccess}/>
         )
+    }
+
+    handleRegisterSuccess = () => {
+        this.context.handleOpenLoginForm()
     }
 
     handleLoginSuccess = () => {
@@ -39,7 +41,7 @@ export default class LandingPage extends Component {
       }
 
     render() {
-        const {logInFormOpen, registerFormOpen} = this.context
+        const {logInFormOpen, openRegister} = this.context
         return <>
         <main>
             <section className="openingStatement"> 
@@ -52,11 +54,11 @@ export default class LandingPage extends Component {
             <button className="startButton" onClick={this.handleStartClick}>Start Your Canon</button>
         </section>
         <section className="forms">
+            {openRegister
+            ? this.renderRegisterForm()
+            : <></>}
             {logInFormOpen 
             ? this.renderLogInForm()
-            : <></>}
-            {registerFormOpen
-            ? this.renderRegisterForm()
             : <></>}
         </section>
         </main>

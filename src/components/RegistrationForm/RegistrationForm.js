@@ -1,16 +1,41 @@
 import React, { Component } from 'react';
+import CharacterContext from '../../context/CharacterContext';
+import AuthApiService from '../../services/auth-api-service';
 
 export default class RegistrationForm extends Component {
     static defaultProps = {
         onRegistrationSuccess: () => {}
     };
 
+    static contextType = CharacterContext
+
     state= {error: null};
+
+    handleSumbit = e => {
+        e.preventDefault()
+        const {full_name, user_name, password} = e.target
+
+        this.setState({error: null})
+        AuthApiService.postUser({
+            user_name: user_name.value,
+            password: password.value,
+            full_name: full_name.value
+        })
+            .then(user => {
+                user_name.value = ''
+                password.value = ''
+                full_name.value = ''
+                this.props.onRegistrationSuccess()
+            })
+            .catch(res => {
+                this.setState({ error: res.error })
+            })
+    }
 
     render() {
         const {error} = this.state
         return (
-            <form className="registration">
+            <form className="registration" onSubmit={this.handleSumbit}>
                 <h2>Register</h2>
                 <div role='alert'>
                     {error && <p className='red'>{error}</p>}
