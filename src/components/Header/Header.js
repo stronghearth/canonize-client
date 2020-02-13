@@ -10,24 +10,45 @@ export default class Header extends Component {
     handleLogoutClick = () => {
         TokenService.clearAuthToken()
         this.context.changeToLoggedOutState()
+        this.context.handleCloseLoginForm()
     }
 
     handleLoginClick = () => {
         this.context.handleOpenLogInForm()
     }
+
     handleRegisterClick = () => {
         this.context.handleOpenRegisterForm()
     }
+    
+    closeForms= () => {
+       if (this.context.logInFormOpen) {
+           this.context.handleCloseLoginForm()
+       }
+       if (this.context.openRegister) {
+           this.context.handleCloseRegisterForm()
+       }
+    }
+    
 
     renderLogoutLink() {
         return (
+            <>
             <div>
+            <div>
+            <Link
+                to='/myCanon'
+            >
+            My Canon
+            </Link>
+            </div>
             <Link 
             onClick={this.handleLogoutClick}
             to='/'>
                 Logout
             </Link>
             </div>
+            </>
         )
     }
 
@@ -48,6 +69,7 @@ export default class Header extends Component {
         const { loggedIn } = this.context
         return <nav className='headerNav'>
             <Link className="navCanonizeLink"
+                onClick={this.closeForms}
                 to='/'>
                 <h4>
                 Canonize

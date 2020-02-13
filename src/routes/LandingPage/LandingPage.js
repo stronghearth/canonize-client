@@ -30,7 +30,8 @@ export default class LandingPage extends Component {
     }
 
     handleRegisterSuccess = () => {
-        this.context.handleOpenLoginForm()
+        console.log('yo')
+        this.context.handleCloseRegisterForm()
     }
 
     handleLoginSuccess = () => {

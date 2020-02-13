@@ -2,16 +2,15 @@ import React, {Component} from 'react';
 
 
 const CharacterContext = React.createContext({
-    characters: [],
-    character: {},
-    error: null,
     openRegister: false,
     logInFormOpen: false,
     loggedIn: false,
     changeToLoggedInState: () => {},
     changeToLoggedOutState: () => {},
     handleOpenLogInForm: () => {},
-    handleOpenRegisterForm: () => {}
+    handleCloseLoginForm: () => {},
+    handleOpenRegisterForm: () => {},
+    handleCloseRegisterForm: () => {}
 })
 
 export default CharacterContext
@@ -21,9 +20,6 @@ export class CharacterProvider extends Component {
         loggedIn: false,
         logInFormOpen: false,
         openRegister: false,
-        characters: [],
-        character: {},
-        error: null,
     }
     changeToLoggedInState = () => {
         this.setState({
@@ -44,24 +40,35 @@ export class CharacterProvider extends Component {
         })
     }
 
+    handleCloseLoginForm= () => {
+        this.setState({
+            logInFormOpen: false
+        })
+    }
+
     handleOpenRegisterForm = () => {
         this.setState({
             openRegister: true,
             logInFormOpen: false
         })
     }
+
+    handleCloseRegisterForm = () => {
+        this.setState({
+            openRegister: false
+        })
+    }
     render() {
         const value = {
-            characters: this.state.characters,
-            character: this.state.character,
-            error: this.state.error,
             loggedIn: this.state.loggedIn,
             logInFormOpen: this.state.logInFormOpen,
             openRegister: this.state.openRegister,
             changeToLoggedInState: this.changeToLoggedInState,
             changeToLoggedOutState: this.changeToLoggedOutState,
             handleOpenLogInForm: this.handleOpenLogInForm,
-            handleOpenRegisterForm: this.handleOpenRegisterForm
+            handleCloseLoginForm: this.handleCloseLoginForm,
+            handleOpenRegisterForm: this.handleOpenRegisterForm,
+            handleCloseRegisterForm: this.handleCloseRegisterForm
         }
         return(
             <CharacterContext.Provider value={value}>
