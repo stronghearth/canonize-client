@@ -33,7 +33,7 @@ export default class LoginForm extends Component {
             <form className="login"
             onSubmit={this.handleSubmitJWTAuth}
             >
-                <h2>Log In</h2>
+                <h3>Log In</h3>
                 <div role='alert'>
                     {error && <p className='errorMessage'>{error}</p>}
                 </div>

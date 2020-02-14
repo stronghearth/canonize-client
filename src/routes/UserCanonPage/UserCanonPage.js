@@ -3,17 +3,19 @@ import CharacterApiService from '../../services/character-api-service';
 import UserCanonItem from '../../components/UserCanonItem/UserCanonItem';
 import UserExpandedItem from '../../components/UserExpandedItem/UserExpandedItem';
 import AddCharacterForm from '../../components/AddCharcterForm/AddCharacterForm';
+import CharacterContext from '../../context/CharacterContext'
 
 export default class UserCanonPage extends Component {
-    
+    static contextType = CharacterContext
+
     constructor(props) {
         super(props)
         this.state = {
-        error: null,
-        characters: [],
-        character: {},
-        formOpen: false,
-    }
+            error: null,
+            characters: [],
+            character: {},
+            formOpen: false,
+        }
     }
 
     handleOpen = (e) => {
@@ -23,8 +25,14 @@ export default class UserCanonPage extends Component {
         })
     }
 
-    handleClose = (e) => {
+    handleCloseButton = (e) => {
         e.preventDefault()
+        this.setState({
+            formOpen: false
+        })
+    }
+
+    handleCloseFormAfterAdd = () => {
         this.setState({
             formOpen: false
         })
@@ -34,12 +42,21 @@ export default class UserCanonPage extends Component {
         if (this.state.formOpen) {
             return(
                 <>
-                <AddCharacterForm/>
-                <button onClick={(e) => this.handleClose(e)}>Close</button>
+                <AddCharacterForm closeForm={this.handleCloseFormAfterAdd} updateCharacterList={this.updateCharacterList} changeSelectedCharacter={this.changeSelectedCharacter}/>
+                <button onClick={(e) => this.handleCloseButton(e)}>Close</button>
                 </>
             )
         }
         return <></>
+    }
+
+    updateCharacterList = (char) => {
+        this.setState({
+            characters: [
+                char,
+                ...this.state.characters
+            ]
+        })
     }
 
     changeSelectedCharacter = (char) => {
@@ -62,7 +79,6 @@ export default class UserCanonPage extends Component {
                 error: error.message
             }))
     }
-
     render() {
         const { characters, character } = this.state
         return <>

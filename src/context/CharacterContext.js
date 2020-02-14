@@ -5,12 +5,15 @@ const CharacterContext = React.createContext({
     openRegister: false,
     logInFormOpen: false,
     loggedIn: false,
+    registerDone: false,
     changeToLoggedInState: () => {},
     changeToLoggedOutState: () => {},
     handleOpenLogInForm: () => {},
     handleCloseLoginForm: () => {},
     handleOpenRegisterForm: () => {},
-    handleCloseRegisterForm: () => {}
+    handleCloseRegisterForm: () => {},
+    handleSuccessFullRegister: () => {},
+    handleFinishRegister: () => {}
 })
 
 export default CharacterContext
@@ -20,7 +23,9 @@ export class CharacterProvider extends Component {
         loggedIn: false,
         logInFormOpen: false,
         openRegister: false,
+        registerDone: false,
     }
+
     changeToLoggedInState = () => {
         this.setState({
             loggedIn: true
@@ -36,7 +41,7 @@ export class CharacterProvider extends Component {
     handleOpenLogInForm = () => {
         this.setState({
             logInFormOpen: true,
-            openRegister: false
+            openRegister: false,
         })
     }
 
@@ -55,7 +60,19 @@ export class CharacterProvider extends Component {
 
     handleCloseRegisterForm = () => {
         this.setState({
-            openRegister: false
+            openRegister: false,
+        })
+    }
+
+    handleSuccessFullRegister = () => {
+        this.setState({
+            registerDone: true
+        })
+    }
+
+    handleFinishRegister = () => {
+        this.setState({
+            registerDone: false,
         })
     }
     render() {
@@ -63,12 +80,15 @@ export class CharacterProvider extends Component {
             loggedIn: this.state.loggedIn,
             logInFormOpen: this.state.logInFormOpen,
             openRegister: this.state.openRegister,
+            registerDone: this.state.registerDone,
             changeToLoggedInState: this.changeToLoggedInState,
             changeToLoggedOutState: this.changeToLoggedOutState,
             handleOpenLogInForm: this.handleOpenLogInForm,
             handleCloseLoginForm: this.handleCloseLoginForm,
             handleOpenRegisterForm: this.handleOpenRegisterForm,
-            handleCloseRegisterForm: this.handleCloseRegisterForm
+            handleCloseRegisterForm: this.handleCloseRegisterForm,
+            handleSuccessFullRegister: this.handleSuccessFullRegister,
+            handleFinishRegister: this.handleFinishRegister,
         }
         return(
             <CharacterContext.Provider value={value}>

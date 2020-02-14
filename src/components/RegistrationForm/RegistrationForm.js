@@ -36,7 +36,7 @@ export default class RegistrationForm extends Component {
         const {error} = this.state
         return (
             <form className="registration" onSubmit={this.handleSumbit}>
-                <h2>Register</h2>
+                <h3>Register</h3>
                 <div role='alert'>
                     {error && <p className='red'>{error}</p>}
                 </div>

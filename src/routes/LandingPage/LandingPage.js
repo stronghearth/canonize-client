@@ -11,6 +11,7 @@ export default class LandingPage extends Component {
             push: () => {}
         }
     }
+
     static contextType = CharacterContext;
 
     renderLogInForm = () => {
@@ -30,8 +31,8 @@ export default class LandingPage extends Component {
     }
 
     handleRegisterSuccess = () => {
-        console.log('yo')
         this.context.handleCloseRegisterForm()
+        this.context.handleSuccessFullRegister()
     }
 
     handleLoginSuccess = () => {
@@ -42,7 +43,7 @@ export default class LandingPage extends Component {
       }
 
     render() {
-        const {logInFormOpen, openRegister} = this.context
+        const {logInFormOpen, openRegister, registerDone} = this.context
         return <>
         <main>
             <section className="openingStatement"> 
@@ -55,12 +56,15 @@ export default class LandingPage extends Component {
             <button className="startButton" onClick={this.handleStartClick}>Start Your Canon</button>
         </section>
         <section className="forms">
-            {openRegister
+            {openRegister && !logInFormOpen && !registerDone
             ? this.renderRegisterForm()
             : <></>}
-            {logInFormOpen 
+            {logInFormOpen && !openRegister && !registerDone
             ? this.renderLogInForm()
             : <></>}
+            {registerDone
+            ? <><h3>Success!</h3>{this.renderLogInForm()}</>
+            :<></>}
         </section>
         </main>
         </>

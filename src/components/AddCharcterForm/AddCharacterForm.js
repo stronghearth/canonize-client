@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
-import CharacterApiService from '../../services/character-api-service'
+import CharacterApiService from '../../services/character-api-service';
+import CharacterContext from '../../context/CharacterContext'
 
 export default class AddCharacterForm extends Component {
+    static contextType = CharacterContext
 
     constructor(props) {
         super(props)
@@ -27,7 +29,11 @@ export default class AddCharacterForm extends Component {
         }
 
         CharacterApiService.postCharacter(newCharacter)
-            .then(window.location.reload(false))
+            .then(char => {
+                this.props.updateCharacterList(char)
+                this.props.changeSelectedCharacter(char)
+                this.props.closeForm()
+            })
             .catch(error => this.setState({
                 error: error.message
             }))
