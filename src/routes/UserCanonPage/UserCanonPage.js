@@ -29,7 +29,7 @@ export default class UserCanonPage extends Component {
     
     render() {
         const { characters, handleOpenAdd } = this.context
-        return <main>
+        return <>
         <section>
             <h2 className="userGreeting">Welcome, Canonizer!</h2>{/*implement user insert*/}
             <p className="characterCount">You currently have {characters.length} character(s) in your canon.</p>
@@ -44,6 +44,6 @@ export default class UserCanonPage extends Component {
         <ul className="characterList">
            <UserCanonItem />
         </ul>}
-        </main>
+        </>
     }
 }

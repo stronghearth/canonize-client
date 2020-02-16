@@ -45,7 +45,6 @@ export default class LandingPage extends Component {
     render() {
         const {logInFormOpen, openRegister, registerDone} = this.context
         return <>
-        <main>
             <section className="openingStatement"> 
                 <h1 className="canonize">Canonize</h1>
                 <h3 className="pronounce">/ˈkanəˌnīz/</h3>
@@ -66,7 +65,6 @@ export default class LandingPage extends Component {
             ? <><h3>Success!</h3>{this.renderLogInForm()}</>
             :<></>}
         </section>
-        </main>
         </>
     }
 }
