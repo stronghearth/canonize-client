@@ -1,4 +1,4 @@
 export default {
-    API_ENDPOINT: 'http://localhost:8000/api',
-    TOKEN_KEY: 'canonize-api-token',
+    API_ENDPOINT: 'https://canonize-server.herokuapp.com/',
+    TOKEN_KEY: process.env.TOKEN_KEY,
 }
