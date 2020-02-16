@@ -1,0 +1,11 @@
+.navCharacter {
+    border-style: solid;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    padding: 5px;
+}
+
+.navCharacter:hover{
+    background-color: black;
+    color: white;
+}

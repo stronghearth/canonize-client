@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import CanonContext from '../../context/CanonContext'
+import './UserCanonItem.css'
 
 export default class UserCanonItem extends Component {
     static contextType = CanonContext

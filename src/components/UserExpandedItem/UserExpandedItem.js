@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import EditCharacterForm from '../EditCharacterForm/EditCharacterForm';
 import CanonContext from '../../context/CanonContext';
 import CharacterService from '../../services/character-api-service';
+import './UserExpandedItem.css'
 
 export default class UserExpandedItem extends Component {
     static contextType = CanonContext
@@ -17,18 +18,26 @@ export default class UserExpandedItem extends Component {
             )
     }
 
+    scrollToTop = () => {
+        this.characterTop.scrollIntoView({behavior:'smooth'})
+    }
+    componentDidUpdate() {
+        this.scrollToTop();
+    }
+
     render() {
-        const {error, successMessage, character, editFormOpen, openEditForm, closeEditForm}= this.context
+        const {error, successMessage, character, editFormOpen, openEditForm}= this.context
 
         return <>
+                <div ref={(el) =>{ this.characterTop = el}}></div>
                 {editFormOpen
-                ? <><EditCharacterForm /><button onClick={() => closeEditForm()}>Close</button></>
+                ? <EditCharacterForm />
                 : <><div role='alert'>
                     {error && <p className='errorMessage'>{error}</p>}
                     {successMessage && <p className="successMessage">{successMessage}</p>}
                 </div>
                 <h3>{character.character_name}</h3>
-                {!character.art_img ? <></> : <img src={character.art_img} alt={character.character_name}/>}
+                {!character.art_img ? <></> : <img src={character.art_img} className="characterAvatar" alt={character.character_name}/>}
                 <ul className="expandedUlChar">
                     {!character.age ? <></> : <li><p>Age: {character.age}</p></li>}
                     {!character.gender ? <></> : <li><p>Gender: {character.gender}</p></li>}
@@ -38,8 +47,10 @@ export default class UserExpandedItem extends Component {
                     {!character.mannerisms ? <></> : <li><p>Mannerisms: {character.mannerisms}</p></li>}
                     {!character.general_desc ? <></> : <li><p>General Description: {character.general_desc}</p></li>}
                 </ul>
-                <button onClick={() => openEditForm()}>Edit</button>
-                <button onClick={() => this.handleDelete(character.id)}>Delete</button></>}
-        </>
+                <div className="characterButtons">
+                <button className="editButton" onClick={() => openEditForm()}>Edit</button>
+                <button classNam="deleteButton" onClick={() => this.handleDelete(character.id)}>Delete</button>
+                </div></>}
+                </>
     }
 }

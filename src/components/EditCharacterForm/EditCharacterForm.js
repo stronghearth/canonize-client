@@ -66,10 +66,10 @@ export default class EditCharacterForm extends Component {
     }
     render() {
         const {characterName, age, gender, strongest_bonds, antagonist, appearance, mannerisms, general_desc, art_img} = this.state
-        const {error, successMessage} = this.context
+        const {error, successMessage, closeEditForm} = this.context
         return (<>
                 {successMessage && <p>{successMessage}</p>}
-                <form className="newCharacterForm" onSubmit={this.handleSubmit}>
+                <form className="editCharacterForm" onSubmit={this.handleSubmit}>
                 <legend>Edit Your Character</legend>
                 {error && <p>{error}</p>}
                 <div className="formLeft">
@@ -101,8 +101,10 @@ export default class EditCharacterForm extends Component {
                     <label htmlFor="art_img" name="artwork" className="newCharacter" >Artwork</label><br />
                     <input type="url" name="art_img" id="art_img" value={art_img} onChange={e => this.setState({art_img: e.target.value})} className="artwork newCharacter" pattern="https://.*" placeholder="https://example.com/exampleimg.jpg"/>
                 </div>
+            <div className="characterButtons">
             <button type="submit">Save</button>
-            
+            <button onClick={() => closeEditForm()}>Close</button>
+            </div>
             </form>
             </>
         )

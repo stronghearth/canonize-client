@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import CharacterApiService from '../../services/character-api-service';
 import CanonContext from '../../context/CanonContext'
+import './AddCharacterForm.css'
 
 export default class AddCharacterForm extends Component {
     static contextType = CanonContext
@@ -67,7 +68,10 @@ export default class AddCharacterForm extends Component {
                 <label htmlFor="art_img" name="artwork" className="newCharacter">Artwork</label><br />
                 <input type="url" name="art_img" id="art_img" className="artwork newCharacter" pattern="https://.*" placeholder="https://example.com/exampleimg.jpg"/>
             </div>
-        <button type="submit">Add to Your Cannon</button>
+        <div className="characterButtons">
+        <button className="addToCanonButton" type="submit">Add to Your Cannon</button>
+        <button onClick={(e) => this.context.handleCloseAddButton(e)}>Close</button>
+        </div>
         </form>
         </>
     }

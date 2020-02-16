@@ -1,0 +1,21 @@
+.expandedUlChar {
+    max-width: 80%;
+}
+
+.characterAvatar {
+    max-width: 95%;
+    border-style: solid;
+}
+
+.characterButtons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    
+}
+.editButton, .deleteButton {
+    display: flex;
+    flex-direction: row;
+    align-self: start;
+    margin-right: 10px;
+}

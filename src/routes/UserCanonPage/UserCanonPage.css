@@ -1,0 +1,25 @@
+main {
+    line-height: 1.5;
+}
+
+.selectedCharacter {
+    border-style: solid;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+}
+
+.addButton {
+    padding: 20px;
+    margin-bottom: 15px;
+}
+textarea {
+    border-style: solid;
+    width: 95%;
+    height: 75px;
+    padding: 5px;
+    margin-bottom: 10px;
+}

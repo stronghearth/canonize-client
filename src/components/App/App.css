@@ -2,6 +2,43 @@
   text-align: center;
 }
 
+h1, h2, h3, h4, h5 {
+  font-family: 'Source Code Pro', monospace;
+}
+
+p, ul {
+  font-family: 'Roboto', sans-serif;
+}
+
+nav, footer {
+    padding: 1% 0;
+    background-color: #aaa;
+  }
+
+button {
+  border-radius: 5px;
+  padding: 10px;
+}
+  
+main {
+  max-width: 95%;
+  padding: 20px;
+  padding-top: 50px;
+}
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 5px;
+}
+
 ul {
   list-style-type: none;
+  padding: 0;
 }
+

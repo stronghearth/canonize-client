@@ -38,7 +38,7 @@ export default class Header extends Component {
     renderLogoutLink() {
         return (
             <>
-            <div>
+            <div className="loginRegister">
             <Link 
             onClick={this.handleLogoutClick}
             to='/'>
@@ -51,15 +51,16 @@ export default class Header extends Component {
 
     renderLoginLink () {
         return (
-            <>
-            <div 
-            onClick={this.handleLoginClick}>
-          Log in
+        <div className ="loginRegister">
+            <p className="navLink"
+               onClick={this.handleLoginClick}>
+                Log in
+            </p> 
+            <p className="navLink" 
+                onClick={this.handleRegisterClick}>
+                Register
+            </p>
         </div>
-        <div onClick={this.handleRegisterClick}>
-          Register
-        </div>
-        </>
         )
     }
     render() {
@@ -67,7 +68,7 @@ export default class Header extends Component {
         const { loggedIn } = this.context
         return <nav className='headerNav'>
             {loggedIn
-            ? <h4>Canonize</h4>
+            ? <h4 className="canonizeDormant">Canonize</h4>
             : <Link className="navCanonizeLink"
             onClick={this.closeForms}
             to='/'>
