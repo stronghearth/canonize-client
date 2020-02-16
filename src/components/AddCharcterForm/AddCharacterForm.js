@@ -1,16 +1,9 @@
 import React, {Component} from 'react';
 import CharacterApiService from '../../services/character-api-service';
-import CharacterContext from '../../context/CharacterContext'
+import CanonContext from '../../context/CanonContext'
 
 export default class AddCharacterForm extends Component {
-    static contextType = CharacterContext
-
-    constructor(props) {
-        super(props)
-        this.state = {
-            error: null,
-        }
-    }
+    static contextType = CanonContext
 
     handleSubmit = (e) => {
         e.preventDefault()
@@ -25,23 +18,25 @@ export default class AddCharacterForm extends Component {
             mannerisms: mannerisms.value,
             general_desc: general_desc.value,
             art_img: art_img.value,
-            user_id: 1
         }
 
+        const {updateCharacterList, changeSelectedCharacter, addSuccessMessage, handleCloseFormAfterAdd, errorCatch} = this.context;
         CharacterApiService.postCharacter(newCharacter)
             .then(char => {
-                this.props.updateCharacterList(char)
-                this.props.changeSelectedCharacter(char)
-                this.props.closeForm()
+                updateCharacterList(char)
+                changeSelectedCharacter(char)
+                addSuccessMessage()
+                handleCloseFormAfterAdd()
             })
-            .catch(error => this.setState({
-                error: error.message
-            }))
-        
+            .catch(error => errorCatch(error))
     }
 
     render() {
-        return <form className="newCharacterForm" onSubmit={this.handleSubmit}>
+        const {error, successMessage} = this.context
+        return <>
+            {successMessage && <p>{successMessage}</p>}
+            <form className="newCharacterForm" onSubmit={this.handleSubmit}>
+                {error && <p>{error}</p>}
             <legend>Add A New Character</legend>
             <div className="formLeft">
                 <label htmlFor="characterName" className="newCharacter">Name *</label><br />
@@ -50,13 +45,13 @@ export default class AddCharacterForm extends Component {
                 <label htmlFor="age" className="newCharacter">Age</label><br />
                 <input type="text" id="age" name="age" className="newCharacter" placeholder="109"/><br />
 
-                <label htmlFor="age" className="newCharacter">Gender</label><br />
+                <label htmlFor="gender" className="newCharacter">Gender</label><br />
                 <input type="text" if="gender" name="gender" className="newCharacter" placeholder="They/Them"/><br />
 
-                <label htmlFor="age" name="bonds" className="newCharacter">Strongest Bonds</label><br />
+                <label htmlFor="strongest_bonds" name="bonds" className="newCharacter">Strongest Bonds</label><br />
                 <input type="text" id="strongest_bonds" name="strongest_bonds" className="newCharacter" placeholder="Very close with her patron"/><br />
 
-                <label htmlFor="age" name="antagonist" className="newCharacter">Antagonist</label><br />
+                <label htmlFor="antagonise" name="antagonist" className="newCharacter">Antagonist</label><br />
                 <input type="text" id="antagonist" name="antagonist" className="newCharacter" placeholder="Argan Berevan"/><br />  
             </div>
             <div className="formRight">
@@ -69,13 +64,11 @@ export default class AddCharacterForm extends Component {
                 <label htmlFor="description" className="newCharacter">General Description *</label><br />
                 <textarea name="general_desc" id="general_desc" className="newCharacter" placeholder="e.g. an elf with a dark secret" required></textarea><br />
 
-                <label htmlFor="age" name="artwork" className="newCharacter">Artwork</label><br />
+                <label htmlFor="art_img" name="artwork" className="newCharacter">Artwork</label><br />
                 <input type="url" name="art_img" id="art_img" className="artwork newCharacter" pattern="https://.*" placeholder="https://example.com/exampleimg.jpg"/>
             </div>
-        
-
         <button type="submit">Add to Your Cannon</button>
-        
         </form>
+        </>
     }
 }

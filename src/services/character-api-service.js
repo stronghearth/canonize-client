@@ -17,6 +17,21 @@ const CharacterApiService = {
             return res.json()
         })
     },
+    getCharacterbyId (id) {
+        return fetch(`${config.API_ENDPOINT}/characters/${id}`, {
+            method: 'GET',
+            headers: {
+                'content-type': 'applicaton/json',
+                'authorization': `bearer ${TokenService.getAuthToken()}`
+            },
+        })
+        .then(res => {
+            if(!res.ok) {
+                throw new Error(res.statusText)
+            }
+            return res.json()
+        })
+    },
     postCharacter(newCharacter) {
         return fetch(`${config.API_ENDPOINT}/characters`, {
             method: 'POST',
@@ -33,6 +48,36 @@ const CharacterApiService = {
               throw new Error(res.statusText);
           }  
           return res.json()
+        })
+    },
+    updateCharacter(characterToUpdate, id) {
+        return fetch(`${config.API_ENDPOINT}/characters/${id}`, {
+            method: 'PATCH',
+            body: JSON.stringify(characterToUpdate),
+            headers: {
+                'content-type': 'application/json',
+                'authorization': `bearer ${TokenService.getAuthToken()}`
+            }
+        })
+            .then(res => {
+                if(!res.ok) {
+                    throw new Error(res.statusText);
+                }
+            })
+
+    },
+    deleteCharacter(id) {
+        return fetch(`${config.API_ENDPOINT}/characters/${id}`, {
+            method: 'DELETE',
+            headers: {
+                'content-type': 'application/json',
+                'authorization': `bearer ${TokenService.getAuthToken()}`
+            }
+        })
+        .then(res => {
+            if(!res.ok) {
+                throw new Error(res.statusText)
+            }
         })
     }
 }

@@ -3,12 +3,11 @@ import CharacterApiService from '../../services/character-api-service';
 import UserCanonItem from '../../components/UserCanonItem/UserCanonItem';
 import UserExpandedItem from '../../components/UserExpandedItem/UserExpandedItem';
 import AddCharacterForm from '../../components/AddCharcterForm/AddCharacterForm';
-import CharacterContext from '../../context/CharacterContext'
+import CanonContext from '../../context/CanonContext'
 
 export default class UserCanonPage extends Component {
-    static contextType = CharacterContext
-
-    constructor(props) {
+    static contextType = CanonContext
+    /*constructor(props) {
         super(props)
         this.state = {
             error: null,
@@ -16,46 +15,43 @@ export default class UserCanonPage extends Component {
             character: {},
             formOpen: false,
         }
-    }
+    }*/
 
-    handleOpen = (e) => {
+    /*handleOpen = (e) => {
         e.preventDefault()
         this.setState({
             formOpen: true
         })
-    }
+    }*/
 
-    handleCloseButton = (e) => {
-        e.preventDefault()
-        this.setState({
-            formOpen: false
-        })
-    }
-
-    handleCloseFormAfterAdd = () => {
-        this.setState({
-            formOpen: false
-        })
-    }
+    
 
     renderCharacterForm = () => {
-        if (this.state.formOpen) {
+        if (this.context.addFormOpen) {
             return(
                 <>
-                <AddCharacterForm closeForm={this.handleCloseFormAfterAdd} updateCharacterList={this.updateCharacterList} changeSelectedCharacter={this.changeSelectedCharacter}/>
-                <button onClick={(e) => this.handleCloseButton(e)}>Close</button>
+                <AddCharacterForm />
+                <button onClick={(e) => this.context.handleCloseAddButton(e)}>Close</button>
                 </>
             )
         }
         return <></>
     }
 
-    updateCharacterList = (char) => {
+    /*updateCharacterList = (char) => {
         this.setState({
             characters: [
                 char,
                 ...this.state.characters
             ]
+        })
+    }
+
+    removeCharacter = (id) => {
+        const newCharacters = this.state.characters.filter(char => char.id !== id)
+        this.setState({
+            characters: newCharacters,
+            character: newCharacters[0]
         })
     }
 
@@ -67,35 +63,36 @@ export default class UserCanonPage extends Component {
         })
     }
 
+    updateCharacter = (char) => {
+        this.setState({
+            character: char
+        })
+    }*/
+
     componentDidMount() {
+        const {getInitialCharacterList, errorCatch} = this.context
        CharacterApiService.getCharacters()
             .then(res => {
-                this.setState({
-                    characters: res || [],
-                    character: res[0] || {}
-                })
+                getInitialCharacterList(res)
             })
-            .catch(error => this.setState({
-                error: error.message
-            }))
+            .catch(error => errorCatch(error))
     }
+    
     render() {
-        const { characters, character } = this.state
+        const { characters, handleOpenAdd } = this.context
         return <>
         <section>
             <h2 className="userGreeting">Welcome, Canonizer!</h2>{/*implement user insert*/}
             <p className="characterCount">You currently have {characters.length} character(s) in your canon.</p>
         </section>
         <div className = "selectedCharacter">
-            <UserExpandedItem currentCharacter={character}/>
+            <UserExpandedItem />
         </div>
-        <button onClick={(e) => this.handleOpen(e)}>Add Character</button>
+        <button onClick={(e) => handleOpenAdd(e)}>Add Character</button>
         {this.renderCharacterForm()}
         {characters.length === 0 ? <></> :
         <ul className="characterList">
-           <UserCanonItem 
-           characters={characters}
-           changeSelectedCharacter={this.changeSelectedCharacter}/>
+           <UserCanonItem />
         </ul>}
         </>
     }

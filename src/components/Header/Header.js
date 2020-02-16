@@ -63,6 +63,7 @@ export default class Header extends Component {
         )
     }
     render() {
+        console.log(this.context)
         const { loggedIn } = this.context
         return <nav className='headerNav'>
             {loggedIn

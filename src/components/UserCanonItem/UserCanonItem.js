@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
+import CanonContext from '../../context/CanonContext'
 
 export default class UserCanonItem extends Component {
+    static contextType = CanonContext
     render() {
-    const characters = this.props.characters
+    const {characters, changeSelectedCharacter} = this.context
     return characters.map(character => {
         const characterId = character.id
         const characterName = character.character_name
         return <li key={characterId} 
                    className="navCharacter" 
-                   onClick={() => {this.props.changeSelectedCharacter(character)}}>
+                   onClick={() => {changeSelectedCharacter(character)}}>
                             {characterName}
                 </li>
     })

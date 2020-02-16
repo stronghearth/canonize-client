@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
+import TokenService from '../services/token-service'
 
 
 const CharacterContext = React.createContext({
     openRegister: false,
     logInFormOpen: false,
-    loggedIn: false,
+    loggedIn: TokenService.hasAuthToken(),
     registerDone: false,
     changeToLoggedInState: () => {},
     changeToLoggedOutState: () => {},
@@ -20,13 +21,14 @@ export default CharacterContext
 
 export class CharacterProvider extends Component {
     state = {
-        loggedIn: false,
+        loggedIn: TokenService.hasAuthToken(),
         logInFormOpen: false,
         openRegister: false,
         registerDone: false,
     }
 
     changeToLoggedInState = () => {
+
         this.setState({
             loggedIn: true
         })
