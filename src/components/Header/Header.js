@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import CharacterContext from '../../context/CharacterContext'
 import TokenService from '../../services/token-service'
 import './header.css';
@@ -39,11 +38,11 @@ export default class Header extends Component {
         return (
             <>
             <div className="loginRegister">
-            <Link 
+            <a className="navLink"
             onClick={this.handleLogoutClick}
-            to='/'>
+            href='/'>
                 Logout
-            </Link>
+            </a>
             </div>
             </>
         )
@@ -64,18 +63,17 @@ export default class Header extends Component {
         )
     }
     render() {
-        console.log(this.context)
         const { loggedIn } = this.context
         return <nav className='headerNav'>
             {loggedIn
             ? <h4 className="canonizeDormant">Canonize</h4>
-            : <Link className="navCanonizeLink"
+            : <a className="navCanonizeLink"
             onClick={this.closeForms}
-            to='/'>
+            href='/'>
             <h4>
             Canonize
             </h4>
-            </Link>}
+            </a>}
             {loggedIn
             ? this.renderLogoutLink()
             : this.renderLoginLink()}

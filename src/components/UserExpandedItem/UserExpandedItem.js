@@ -49,7 +49,7 @@ export default class UserExpandedItem extends Component {
                 </ul>
                 <div className="characterButtons">
                 <button className="editButton" onClick={() => openEditForm()}>Edit</button>
-                <button classNam="deleteButton" onClick={() => this.handleDelete(character.id)}>Delete</button>
+                <button className="deleteButton" onClick={() => this.handleDelete(character.id)}>Delete</button>
                 </div></>}
                 </>
     }
