@@ -1,25 +1,51 @@
-main {
-    line-height: 1.5;
-}
-
 .selectedCharacter {
     border-style: solid;
+    border-color: darkgray;
     border-radius: 5px;
     margin-bottom: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 10px;
+    background-color: #FFFEFA;
 }
 
 .addButton {
     padding: 20px;
     margin-bottom: 15px;
 }
+
 textarea {
     border-style: solid;
     width: 95%;
     height: 75px;
     padding: 5px;
     margin-bottom: 10px;
+}
+
+@media screen and (min-width: 800px) {
+    .canonSection{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-start;
+    }
+    .selectedCharacter {
+        margin-right: 50px;
+        max-width: 50%;
+        text-align: left;
+        padding: 20px;
+    }
+    legend {
+        font-size: 20px;
+    }
+    .editCharacterForm {
+        padding: 20px;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+    .characterMenu {
+        max-width: 50%;
+        margin-right: 20px;
+    }
 }

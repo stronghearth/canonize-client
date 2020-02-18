@@ -1,19 +1,5 @@
-.newCharacterForm {
-    border-style: solid;
-    border-color: darkgray;
-    padding: 5px;
-    border-radius: 5px;
+.editCharacterForm {
     background-color: #FFFEFA;
-}
-label {
-    text-align: left;
-}
-.formRight {
-    margin-bottom: 10px;
-}
-
-legend {
-    font-size: 20px;
 }
 
 @media screen and (min-width: 1500px) {

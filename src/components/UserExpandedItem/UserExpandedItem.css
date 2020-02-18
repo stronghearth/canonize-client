@@ -5,6 +5,8 @@
 .characterAvatar {
     max-width: 95%;
     border-style: solid;
+    border-width: 10px;
+    border-color: #daa520;
 }
 
 .characterButtons {
@@ -12,9 +14,20 @@
     flex-direction: row;
     justify-content: space-evenly;
 }
+
 .editButton, .deleteButton {
     display: flex;
     flex-direction: row;
     align-self: start;
     margin-right: 10px;
+}
+
+@media screen and (min-width: 800px) {
+    .characterAvatar {
+        max-width: 80%;
+        max-height: 50%;
+    }
+    .characterName {
+        text-align: center;
+    }
 }

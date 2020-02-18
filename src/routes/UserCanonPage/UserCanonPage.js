@@ -34,9 +34,11 @@ export default class UserCanonPage extends Component {
             <h2 className="userGreeting">Welcome, Canonizer!</h2>{/*implement user insert*/}
             <p className="characterCount">You currently have {characters.length} character(s) in your canon.</p>
         </section>
+        <section className="canonSection">
         <div className = "selectedCharacter">
             <UserExpandedItem />
         </div>
+        <div className="characterMenu">
         <button className="addButton" onClick={(e) => handleOpenAdd(e)}>Add Character</button>
         {this.renderCharacterForm()}
         <h4>Characters in Your Canon</h4>
@@ -44,6 +46,8 @@ export default class UserCanonPage extends Component {
         <ul className="characterList">
            <UserCanonItem />
         </ul>}
+        </div>
+        </section>
         </>
     }
 }

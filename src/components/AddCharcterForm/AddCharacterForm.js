@@ -52,7 +52,7 @@ export default class AddCharacterForm extends Component {
                 <label htmlFor="strongest_bonds" name="bonds" className="newCharacter">Strongest Bonds</label><br />
                 <input type="text" id="strongest_bonds" name="strongest_bonds" className="newCharacter" placeholder="Very close with her patron"/><br />
 
-                <label htmlFor="antagonise" name="antagonist" className="newCharacter">Antagonist</label><br />
+                <label htmlFor="antagonist" name="antagonist" className="newCharacter">Antagonist</label><br />
                 <input type="text" id="antagonist" name="antagonist" className="newCharacter" placeholder="Argan Berevan"/><br />  
             </div>
             <div className="formRight">

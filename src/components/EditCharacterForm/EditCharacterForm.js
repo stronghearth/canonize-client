@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import CharacterApiService from '../../services/character-api-service';
-import CanonContext from '../../context/CanonContext'
+import CanonContext from '../../context/CanonContext';
+import './EditCharacterForm.css'
 
 export default class EditCharacterForm extends Component {
     static contextType = CanonContext

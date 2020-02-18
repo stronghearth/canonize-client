@@ -6,24 +6,30 @@ h1, h2, h3, h4, h5 {
   font-family: 'Source Code Pro', monospace;
 }
 
-p, ul {
+p, ul, a, li {
   font-family: 'Roboto', sans-serif;
 }
 
 nav, footer {
     padding: 1% 0;
-    background-color: #aaa;
-  }
+    background-color: #4A093E;
+    color: #ffffff;
+}
 
 button {
+  background-color: #0B9690;
+  color: white;
   border-radius: 5px;
-  padding: 10px;
+  padding: 15px 32px;
 }
   
 main {
-  max-width: 95%;
-  padding: 20px;
   margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  line-height: 1.5;
 }
 
 nav {
@@ -36,6 +42,7 @@ nav {
   flex-direction: row;
   justify-content: space-between;
   padding: 5px;
+  box-shadow: 10px grey;
 }
 
 ul {
@@ -43,3 +50,11 @@ ul {
   padding: 0;
 }
 
+@media screen and (min-width: 800px) {
+  main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+  

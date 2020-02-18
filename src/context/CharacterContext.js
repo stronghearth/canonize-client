@@ -17,7 +17,7 @@ const CharacterContext = React.createContext({
     handleFinishRegister: () => {}
 })
 
-export default CharacterContext
+
 
 export class CharacterProvider extends Component {
     state = {
@@ -99,3 +99,4 @@ export class CharacterProvider extends Component {
         )
     }
 }
+export default CharacterContext

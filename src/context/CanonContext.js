@@ -24,7 +24,7 @@ const CanonContext = React.createContext({
     nullifySuccessMessage: () => {},
 })
 
-export default CanonContext
+
 
 export class CanonProvider extends Component {
     state = {
@@ -168,3 +168,5 @@ export class CanonProvider extends Component {
         )
     }
 }
+
+export default CanonContext;

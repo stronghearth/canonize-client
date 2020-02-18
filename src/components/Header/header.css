@@ -12,9 +12,13 @@
     justify-content: center;
     align-self: center;
     margin-left: 10px;
+    font-family: 'Roboto Slab', sans-serif;
+    font-size: 20px;
+    color: white;
 }
+
 .navLink {
-    color: purple;
+    color: white;
     text-decoration: underline;
     display: flex;
     flex-direction: row;
