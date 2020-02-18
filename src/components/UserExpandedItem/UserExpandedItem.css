@@ -30,4 +30,7 @@
     .characterName {
         text-align: center;
     }
+    .characterButtons {
+        padding: 5px;
+    }
 }

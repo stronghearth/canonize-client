@@ -35,7 +35,7 @@ export default class AddCharacterForm extends Component {
     render() {
         const {error, successMessage} = this.context
         return <>
-            {successMessage && <p>{successMessage}</p>}
+            {successMessage && <p className="successMessage">{successMessage}</p>}
             <form className="newCharacterForm" onSubmit={this.handleSubmit}>
                 {error && <p>{error}</p>}
             <legend>Add A New Character</legend>
@@ -69,7 +69,7 @@ export default class AddCharacterForm extends Component {
                 <input type="url" name="art_img" id="art_img" className="artwork newCharacter" pattern="https://.*" placeholder="https://example.com/exampleimg.jpg"/>
             </div>
         <div className="characterButtons">
-        <button className="addToCanonButton" type="submit">Add to Your Cannon</button>
+        <button className="addToCanonButton" type="submit">Add to Canon</button>
         <button onClick={(e) => this.context.handleCloseAddButton(e)}>Close</button>
         </div>
         </form>

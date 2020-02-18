@@ -69,7 +69,7 @@ export default class EditCharacterForm extends Component {
         const {characterName, age, gender, strongest_bonds, antagonist, appearance, mannerisms, general_desc, art_img} = this.state
         const {error, successMessage, closeEditForm} = this.context
         return (<>
-                {successMessage && <p>{successMessage}</p>}
+                {successMessage && <p className="successMessage">{successMessage}</p>}
                 <form className="editCharacterForm" onSubmit={this.handleSubmit}>
                 <legend>Edit Your Character</legend>
                 {error && <p>{error}</p>}
