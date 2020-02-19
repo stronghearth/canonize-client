@@ -26,6 +26,7 @@ export default class EditCharacterForm extends Component {
         const id = character.id
         const {character_name, age, gender, strongest_bonds, antagonist, appearance, mannerisms, general_desc, art_img} = e.target
         const characterToUpdate = {
+            id: character.id,
             character_name: character_name.value,
             age: age.value || '',
             gender: gender.value || '',
@@ -36,14 +37,11 @@ export default class EditCharacterForm extends Component {
             general_desc: general_desc.value,
             art_img: art_img.value || ''
         }
-
-
         CharacterApiService.updateCharacter(characterToUpdate, id)
             .then(updateCharacter(characterToUpdate))
             .then(editSuccessMessage())
             .then(closeEditForm())
             .catch(error => errorCatch(error))
-
     }
 
     componentDidMount() {
@@ -71,8 +69,9 @@ export default class EditCharacterForm extends Component {
         return (<>
                 {successMessage && <p className="successMessage">{successMessage}</p>}
                 <form className="editCharacterForm" onSubmit={this.handleSubmit}>
+                {error && <p className="errorMessage">{error}</p>}
                 <legend>Edit Your Character</legend>
-                {error && <p>{error}</p>}
+                <div className="formFields">
                 <div className="formLeft">
                     <label htmlFor="characterName" className="newCharacter" >Name *</label><br />
                     <input type="text" id="character_name" placeholder="Ellandra Berevan" value={characterName} onChange={e => this.setState({characterName: e.target.value})}name="character_name" className="newCharacter" required/><br />
@@ -101,6 +100,7 @@ export default class EditCharacterForm extends Component {
 
                     <label htmlFor="art_img" name="artwork" className="newCharacter" >Artwork</label><br />
                     <input type="url" name="art_img" id="art_img" value={art_img} onChange={e => this.setState({art_img: e.target.value})} className="artwork newCharacter" pattern="https://.*" placeholder="https://example.com/exampleimg.jpg"/>
+                </div>
                 </div>
             <div className="characterButtons">
             <button type="submit">Save</button>

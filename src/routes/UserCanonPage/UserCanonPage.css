@@ -1,6 +1,7 @@
 .selectedCharacter {
     border-style: solid;
     border-color: darkgray;
+    border-width: 2px;
     border-radius: 5px;
     margin-bottom: 20px;
     display: flex;
@@ -15,6 +16,12 @@
     margin-bottom: 15px;
 }
 
+.addButton:hover {
+    background-color:#FFFEFA;
+    border: 2px solid darkgrey;
+    color: #0B9690;
+}
+
 textarea {
     border-style: solid;
     width: 95%;
@@ -27,25 +34,39 @@ textarea {
     .canonSection{
         display: flex;
         flex-direction: row;
-        justify-content: center;
+        justify-content: space-evenly;
         align-items: flex-start;
     }
     .selectedCharacter {
-        margin-right: 50px;
-        max-width: 50%;
+        margin-right: 15px;
         text-align: left;
-        padding: 20px;
+        display: flex;
+        min-width: 500px;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+    .characterCard {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+    .characterLeft {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .expandedUlChar {
+        margin-left: 5px;
     }
     legend {
         font-size: 20px;
     }
-    .editCharacterForm {
-        padding: 20px;
-        text-align: center;
-        margin-bottom: 10px;
-    }
     .characterMenu {
-        max-width: 50%;
+        max-width: 75%;
         margin-right: 20px;
     }
 }

@@ -2,20 +2,47 @@
     background-color: #FFFEFA;
 }
 
-@media screen and (min-width: 1500px) {
+@media screen and (min-width: 800px) {
+    .editCharacterForm, .newCharacterForm {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 90%
+    }
+    .formFields {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        padding: 20px;
+    }
     .formLeft {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        margin-right: 30px;
+        margin-left: 30px;
     }
     .formRight{
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        margin-right: 30px;
     }
-    input {
+}
+
+@media screen and (min-width: 1500px) {
+    .editCharacterForm {
         width: 95%;
+    }
+    .formFields{
+        padding: 0
+    }
+    .formLeft{
+        margin-left: 5px;
+    }
+    .formRight {
+        margin-right: 5px;
     }
 }

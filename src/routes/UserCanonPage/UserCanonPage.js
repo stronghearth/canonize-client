@@ -28,25 +28,29 @@ export default class UserCanonPage extends Component {
     }
     
     render() {
-        const { characters, handleOpenAdd } = this.context
+        const { characters, handleOpenAdd, character, addButtonHidden } = this.context
         return <>
         <section>
-            <h2 className="userGreeting">Welcome, Canonizer!</h2>{/*implement user insert*/}
+            <h2 className="userGreeting">Welcome, Canonizer!</h2>
             <p className="characterCount">You currently have {characters.length} character(s) in your canon.</p>
         </section>
         <section className="canonSection">
-        <div className = "selectedCharacter">
-            <UserExpandedItem />
-        </div>
-        <div className="characterMenu">
-        <button className="addButton" onClick={(e) => handleOpenAdd(e)}>Add Character</button>
-        {this.renderCharacterForm()}
-        <h4>Characters in Your Canon</h4>
-        {characters.length === 0 ? <></> :
-        <ul className="characterList">
-           <UserCanonItem />
-        </ul>}
-        </div>
+            
+            {!character ? <></> : <div className = "selectedCharacter"><UserExpandedItem /></div> }
+                
+            <div className="characterMenu">
+
+                {addButtonHidden ? <></> : <button className="addButton" onClick={(e) => handleOpenAdd(e)}>Add Character</button>}
+                {this.renderCharacterForm()}
+                
+                {characters.length === 0 || this.context.addFormOpen ? <></> : 
+                <>
+                    <h4>Characters in Your Canon</h4>
+                    <ul className="characterList">
+                    <UserCanonItem />
+                    </ul>
+                </>}
+            </div>
         </section>
         </>
     }

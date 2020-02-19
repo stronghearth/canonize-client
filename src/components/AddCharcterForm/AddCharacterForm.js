@@ -39,6 +39,7 @@ export default class AddCharacterForm extends Component {
             <form className="newCharacterForm" onSubmit={this.handleSubmit}>
                 {error && <p>{error}</p>}
             <legend>Add A New Character</legend>
+            <div className="formFields">
             <div className="formLeft">
                 <label htmlFor="characterName" className="newCharacter">Name *</label><br />
                 <input type="text" id="character_name" placeholder="Ellandra Berevan" name="character_name" className="newCharacter" required/><br />
@@ -67,6 +68,7 @@ export default class AddCharacterForm extends Component {
 
                 <label htmlFor="art_img" name="artwork" className="newCharacter">Artwork</label><br />
                 <input type="url" name="art_img" id="art_img" className="artwork newCharacter" pattern="https://.*" placeholder="https://example.com/exampleimg.jpg"/>
+            </div>
             </div>
         <div className="characterButtons">
         <button className="addToCanonButton" type="submit">Add to Canon</button>

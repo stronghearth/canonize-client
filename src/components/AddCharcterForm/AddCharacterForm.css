@@ -1,9 +1,12 @@
+.newCharacterForm, .editCharacterForm {
+    padding: 5px;  
+    background-color: #FFFEFA;
+    width: auto;
+}
 .newCharacterForm {
     border-style: solid;
-    border-color: darkgray;
-    padding: 5px;
+    border-color: darkgray; 
     border-radius: 5px;
-    background-color: #FFFEFA;
 }
 label {
     text-align: left;
@@ -14,6 +17,7 @@ label {
 
 legend {
     font-size: 20px;
+    text-align: center;
 }
 
 @media screen and (min-width: 1500px) {

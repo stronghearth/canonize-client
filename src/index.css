@@ -5,10 +5,9 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, 'source-code-pro', monospace, 'Roboto', sans-serif; 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: url("./images/parchment.jpg");
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  background-color: white;
+  background-image: url('../src/images/Canonizer\ Draft1[154].png');
+  background-position: center;
+  background-size: auto;
+  background-repeat: repeat-y;
+  background-color: #E9E8E4;
 }

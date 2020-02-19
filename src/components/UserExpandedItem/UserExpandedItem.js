@@ -28,8 +28,11 @@ export default class UserExpandedItem extends Component {
                     {error && <p className='errorMessage'>{error}</p>}
                     {successMessage && <p className="successMessage">{successMessage}</p>}
                 </div>
-                <h3 className="characterName">{character.character_name}</h3>
-                {!character.art_img ? <></> : <img src={character.art_img} className="characterAvatar" alt={character.character_name}/>}
+                        {!character.character_name ? <></> : <h3 className="characterName">{character.character_name}</h3>}
+                <div className="characterCard">
+                    <div className="characterLeft">
+                        {!character.art_img ? <></> : <img src={character.art_img} className="characterAvatar" alt={character.character_name}/>}
+                    </div>
                 <ul className="expandedUlChar">
                     {!character.age ? <></> : <li><p>Age: {character.age}</p></li>}
                     {!character.gender ? <></> : <li><p>Gender: {character.gender}</p></li>}
@@ -39,9 +42,10 @@ export default class UserExpandedItem extends Component {
                     {!character.mannerisms ? <></> : <li><p>Mannerisms: {character.mannerisms}</p></li>}
                     {!character.general_desc ? <></> : <li><p>General Description: {character.general_desc}</p></li>}
                 </ul>
+                </div>
                 <div className="characterButtons">
-                <button className="editButton" onClick={() => openEditForm()}>Edit</button>
-                <button className="deleteButton" onClick={() => this.handleDelete(character.id)}>Delete</button>
+                    <button className="editButton" onClick={() => openEditForm()}>Edit</button>
+                    <button className="deleteButton" onClick={() => this.handleDelete(character.id)}>Delete</button>
                 </div></>}
                 </>
     }

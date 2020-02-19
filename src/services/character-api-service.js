@@ -3,7 +3,7 @@ import TokenService from '../services/token-service'
 
 const CharacterApiService = {
     getCharacters() {
-        return fetch(`${config.API_BASE_URL}/characters`, {
+        return fetch(`${config.API_BASE_URL}/api/characters`, {
             method: 'GET',
             headers: {
                 'content-type': 'applicaton/json',
@@ -18,7 +18,7 @@ const CharacterApiService = {
         })
     },
     getCharacterbyId (id) {
-        return fetch(`${config.API_BASE_URL}/characters/${id}`, {
+        return fetch(`${config.API_BASE_URL}/api/characters/${id}`, {
             method: 'GET',
             headers: {
                 'content-type': 'applicaton/json',
@@ -33,7 +33,7 @@ const CharacterApiService = {
         })
     },
     postCharacter(newCharacter) {
-        return fetch(`${config.API_BASE_URL}/characters`, {
+        return fetch(`${config.API_BASE_URL}/api/characters`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -51,7 +51,7 @@ const CharacterApiService = {
         })
     },
     updateCharacter(characterToUpdate, id) {
-        return fetch(`${config.API_BASE_URL}/characters/${id}`, {
+        return fetch(`${config.API_BASE_URL}/api/characters/${id}`, {
             method: 'PATCH',
             body: JSON.stringify(characterToUpdate),
             headers: {
@@ -67,7 +67,7 @@ const CharacterApiService = {
 
     },
     deleteCharacter(id) {
-        return fetch(`${config.API_BASE_URL}/characters/${id}`, {
+        return fetch(`${config.API_BASE_URL}/api/characters/${id}`, {
             method: 'DELETE',
             headers: {
                 'content-type': 'application/json',

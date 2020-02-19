@@ -7,11 +7,15 @@ const CanonContext = React.createContext({
     addFormOpen: false,
     successMessage: null,
     editFormOpen: false,
+    addButtonHidden: false,
     errorCatch: () => {},
     handleOpenAdd: () => {},
     handleCloseAddButton: () => {},
     handleCloseFormAfterAdd: () => {},
+    hideAddButton: () => {},
+    showAddButton: () => {},
     getInitialCharacterList: () => {},
+    refreshCharacterList: () => {},
     updateCharacterList: () => {},
     removeCharacter: () => {},
     changeSelectedCharacter: () => {},
@@ -34,6 +38,7 @@ export class CanonProvider extends Component {
         addFormOpen: false,
         successMessage: null,
         editFormOpen: false,
+        addButtonHidden: false
     }
 
     errorCatch = (error) => {
@@ -47,6 +52,8 @@ export class CanonProvider extends Component {
         this.setState({
             addFormOpen: true,
         })
+        this.closeEditForm()
+        this.hideAddButton()
         this.nullifySuccessMessage()
     }
 
@@ -55,11 +62,25 @@ export class CanonProvider extends Component {
         this.setState({
             addFormOpen: false
         })
+        this.showAddButton()
     }
 
     handleCloseFormAfterAdd = () => {
         this.setState({
             addFormOpen: false
+        })
+        this.showAddButton()
+    }
+
+    hideAddButton = () => {
+        this.setState ({
+            addButtonHidden: true
+        })
+    }
+
+    showAddButton = () => {
+        this.setState({
+            addButtonHidden: false
         })
     }
 
@@ -79,6 +100,11 @@ export class CanonProvider extends Component {
         })
     }
 
+    refreshCharacterList = (res) => {
+        this.setState({
+            characacters: res
+        })
+    }
     removeCharacter = (id) => {
         const newCharacters = this.state.characters.filter(char => char.id !== id)
         this.setState({
@@ -98,7 +124,7 @@ export class CanonProvider extends Component {
 
     updateCharacter = (char) => {
         this.setState({
-            character: char
+            character: char,
         })
     }
 
@@ -106,6 +132,7 @@ export class CanonProvider extends Component {
         this.setState({
             editFormOpen: true,
         })
+        this.handleCloseFormAfterAdd()
         this.nullifySuccessMessage()
     }
 
@@ -145,11 +172,15 @@ export class CanonProvider extends Component {
             addFormOpen: this.state.addFormOpen,
             successMessage: this.state.successMessage,
             editFormOpen: this.state.editFormOpen,
+            addButtonHidden: this.state.addButtonHidden,
             errorCatch: this.errorCatch,
             handleOpenAdd: this.handleOpenAdd,
             handleCloseAddButton: this.handleCloseAddButton,
             handleCloseFormAfterAdd: this.handleCloseFormAfterAdd,
+            hideAddButton: this.hideAddButton,
+            showAddButton: this.showAddButton,
             getInitialCharacterList: this.getInitialCharacterList,
+            refreshCharacterList: this.refreshCharacterList,
             updateCharacterList: this.updateCharacterList,
             removeCharacter: this.removeCharacter,
             changeSelectedCharacter: this.changeSelectedCharacter,

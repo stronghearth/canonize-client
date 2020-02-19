@@ -39,7 +39,7 @@ export default class RegistrationForm extends Component {
             <form className="registration" onSubmit={this.handleSumbit}>
                 <h3>Register</h3>
                 <div role='alert'>
-                    {error && <p className='red'>{error}</p>}
+                    {error && <p className='errorMessage'>{error}</p>}
                 </div>
                 <label htmlFor='full_name'>Full Name: * </label>
                 <input name='full_name' type='text' required id='full_name'/><br />
