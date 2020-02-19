@@ -19,7 +19,7 @@ export default class UserCanonPage extends Component {
     }
 
     componentDidMount() {
-        const {getInitialCharacterList, errorCatch} = this.context
+       const {getInitialCharacterList, errorCatch} = this.context
        CharacterApiService.getCharacters()
             .then(res => {
                 getInitialCharacterList(res)
@@ -38,9 +38,11 @@ export default class UserCanonPage extends Component {
         <div className = "selectedCharacter">
             <UserExpandedItem />
         </div>
-        <div className="characterMenu">
+        <div className="addCharacterDiv">
         <button className="addButton" onClick={(e) => handleOpenAdd(e)}>Add Character</button>
         {this.renderCharacterForm()}
+        </div>
+        <div className="characterMenu">
         <h4>Characters in Your Canon</h4>
         {characters.length === 0 ? <></> :
         <ul className="characterList">

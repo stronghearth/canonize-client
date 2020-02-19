@@ -2,14 +2,13 @@ import React, { Component } from 'react';
 import TokenService from '../../services/token-service';
 import AuthApiService from '../../services/auth-api-service';
 import CharacterContext from '../../context/CharacterContext';
-
+import CanonContext from '../../'
 export default class LoginForm extends Component {
     static contextType = CharacterContext
-    state = { error: null }
 
+    state = {error: null}
     handleSubmitJWTAuth = e => {
         e.preventDefault()
-        this.setState({ error: null})
         const { user_name, password} = e.target
 
         AuthApiService.postLogin({
@@ -22,8 +21,8 @@ export default class LoginForm extends Component {
           TokenService.saveAuthToken(res.authToken)
           this.props.onLoginSuccess()
         })
-        .catch(res => {
-          this.setState({error: res.error})
+        .catch(error => {
+          this.setState({error: error.messae})
         })
       }
 

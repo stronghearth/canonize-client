@@ -17,4 +17,10 @@ h1.canonize {
         left: 50%;
         transform: translate(-50%, -50%);
     }
+    .forms {
+        padding-bottom: 25px;
+        padding-left: 100px;
+        padding-right: 100px;
+        margin-top: 50px;
+    }
 }
