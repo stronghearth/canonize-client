@@ -38,10 +38,12 @@ export default class EditCharacterForm extends Component {
             art_img: art_img.value || ''
         }
         CharacterApiService.updateCharacter(characterToUpdate, id)
-            .then(updateCharacter(characterToUpdate))
-            .then(editSuccessMessage())
-            .then(closeEditForm())
             .catch(error => errorCatch(error))
+        
+        updateCharacter(characterToUpdate)
+        editSuccessMessage()
+        closeEditForm()
+        setTimeout(function(){window.location.reload(true)}, 2000)
     }
 
     componentDidMount() {
