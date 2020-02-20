@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import CharacterApiService from '../../services/character-api-service';
 import UserCanonItem from '../../components/UserCanonItem/UserCanonItem';
+import SearchBar from '../../components/SearchBar/SearchBar';
 import UserExpandedItem from '../../components/UserExpandedItem/UserExpandedItem';
 import AddCharacterForm from '../../components/AddCharcterForm/AddCharacterForm';
 import CanonContext from '../../context/CanonContext';
@@ -32,7 +33,6 @@ export default class UserCanonPage extends Component {
         return <>
         <section>
             <h2 className="userGreeting">Welcome, Canonizer!</h2>
-            <p className="characterCount">You currently have {characters.length} character(s) in your canon.</p>
         </section>
         <section className="canonSection">
             
@@ -46,6 +46,8 @@ export default class UserCanonPage extends Component {
                 {characters.length === 0 || this.context.addFormOpen ? <></> : 
                 <>
                     <h4>Characters in Your Canon</h4>
+                    <p className="characterCount">{characters.length} character(s)</p>
+                    <SearchBar />
                     <ul className="characterList">
                     <UserCanonItem />
                     </ul>

@@ -9,12 +9,20 @@ h1.canonize {
     font-family: 'Roboto Slab', serif;
     font-size: 45px;
 }
-
+.definition {
+    font-size: 20px;
+}
+.startButton, .registerButton, .loginButton, .instructionButton {
+    width: unset;
+}
 @media screen and (min-width: 800px) {
     .landingContainer {
         position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
+    }
+    .login, .registration {
+        width: unset;
     }
 }

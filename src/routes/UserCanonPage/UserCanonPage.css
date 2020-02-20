@@ -16,7 +16,7 @@
     margin-bottom: 15px;
 }
 
-.addButton:hover {
+button:hover {
     background-color:#FFFEFA;
     border: 2px solid darkgrey;
     color: #0B9690;

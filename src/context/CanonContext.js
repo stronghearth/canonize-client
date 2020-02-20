@@ -100,9 +100,9 @@ export class CanonProvider extends Component {
         })
     }
 
-    refreshCharacterList = (res) => {
+    refreshCharacterList = (arr) => {
         this.setState({
-            characacters: res
+            characters: arr
         })
     }
     removeCharacter = (id) => {

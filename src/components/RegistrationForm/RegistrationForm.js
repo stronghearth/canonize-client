@@ -49,7 +49,7 @@ export default class RegistrationForm extends Component {
 
                 <label htmlFor='password'>Password: * </label>
                 <input name='password' type='password' required id='password'/><br />
-                <button type='Submit'>Register</button>
+                <button type='Submit' className="registerButton">Register</button>
             </form>
         )
     }

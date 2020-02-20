@@ -50,13 +50,16 @@ export default class AddCharacterForm extends Component {
                 <label htmlFor="gender" className="newCharacter">Gender</label><br />
                 <input type="text" if="gender" name="gender" className="newCharacter" placeholder="They/Them"/><br />
 
-                <label htmlFor="strongest_bonds" name="bonds" className="newCharacter">Strongest Bonds</label><br />
-                <input type="text" id="strongest_bonds" name="strongest_bonds" className="newCharacter" placeholder="Very close with her patron"/><br />
+                <label htmlFor="art_img" name="artwork" className="newCharacter">Artwork</label><br />
+                <input type="url" name="art_img" id="art_img" className="artwork newCharacter" pattern="https://.*" placeholder="https://example.com/exampleimg.jpg"/><br />
 
-                <label htmlFor="antagonist" name="antagonist" className="newCharacter">Antagonist</label><br />
-                <input type="text" id="antagonist" name="antagonist" className="newCharacter" placeholder="Argan Berevan"/><br />  
+                <label htmlFor="strongest_bonds" name="bonds" className="newCharacter">Strongest Bonds</label><br />
+                <textarea type="text" id="strongest_bonds" name="strongest_bonds" className="newCharacter" placeholder="Very close with her patron"/><br />
             </div>
             <div className="formRight">
+                <label htmlFor="antagonist" name="antagonist" className="newCharacter">Antagonist</label><br />
+                <textarea type="text" id="antagonist" name="antagonist" className="newCharacter" placeholder="Argan Berevan"/><br />
+
                 <label htmlFor="appearance" className="newCharacter">Appearance</label><br />
                 <textarea type="text" id="appearance" name="appearance" className="newCharacter" placeholder="e.g. blonde, curly hair, 6 ft tall, pointy ears, always sleepy eyes"></textarea><br />
 
@@ -65,9 +68,6 @@ export default class AddCharacterForm extends Component {
 
                 <label htmlFor="description" className="newCharacter">General Description *</label><br />
                 <textarea name="general_desc" id="general_desc" className="newCharacter" placeholder="e.g. an elf with a dark secret" required></textarea><br />
-
-                <label htmlFor="art_img" name="artwork" className="newCharacter">Artwork</label><br />
-                <input type="url" name="art_img" id="art_img" className="artwork newCharacter" pattern="https://.*" placeholder="https://example.com/exampleimg.jpg"/>
             </div>
             </div>
         <div className="characterButtons">

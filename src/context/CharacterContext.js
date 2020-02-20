@@ -7,8 +7,11 @@ const CharacterContext = React.createContext({
     logInFormOpen: false,
     loggedIn: TokenService.hasAuthToken(),
     registerDone: false,
+    instructionsOpen: false,
     changeToLoggedInState: () => {},
     changeToLoggedOutState: () => {},
+    handleOpenInstructions: () => {},
+    handleCloseInstructions: () => {},
     handleOpenLogInForm: () => {},
     handleCloseLoginForm: () => {},
     handleOpenRegisterForm: () => {},
@@ -25,6 +28,7 @@ export class CharacterProvider extends Component {
         logInFormOpen: false,
         openRegister: false,
         registerDone: false,
+        instructionsOpen: false,
     }
 
     changeToLoggedInState = () => {
@@ -37,6 +41,18 @@ export class CharacterProvider extends Component {
     changeToLoggedOutState = () => {
         this.setState({
             loggedIn: false
+        })
+    }
+
+    handleOpenInstructions = () => {
+        this.setState({
+            instructionsOpen: true
+        })
+    }
+
+    handleCloseInstructions = () => {
+        this.setState({
+            instructionsOpen: false
         })
     }
 
@@ -83,8 +99,11 @@ export class CharacterProvider extends Component {
             logInFormOpen: this.state.logInFormOpen,
             openRegister: this.state.openRegister,
             registerDone: this.state.registerDone,
+            instructionsOpen: this.state.instructionsOpen,
             changeToLoggedInState: this.changeToLoggedInState,
             changeToLoggedOutState: this.changeToLoggedOutState,
+            handleOpenInstructions: this.handleOpenInstructions,
+            handleCloseInstructions: this.handleCloseInstructions,
             handleOpenLogInForm: this.handleOpenLogInForm,
             handleCloseLoginForm: this.handleCloseLoginForm,
             handleOpenRegisterForm: this.handleOpenRegisterForm,

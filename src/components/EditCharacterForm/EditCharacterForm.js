@@ -84,13 +84,16 @@ export default class EditCharacterForm extends Component {
                     <label htmlFor="gender" className="newCharacter" >Gender</label><br />
                     <input type="text" if="gender" name="gender" className="newCharacter" value={gender} onChange={e => this.setState({gender: e.target.value})} placeholder="They/Them"/><br />
 
-                    <label htmlFor="strongest_bonds" name="bonds" className="newCharacter">Strongest Bonds</label><br />
-                    <input type="text" id="strongest_bonds" name="strongest_bonds" className="newCharacter" value={strongest_bonds} onChange={e => this.setState({strongest_bonds: e.target.value})}placeholder="Very close with her patron"/><br />
+                    <label htmlFor="art_img" name="artwork" className="newCharacter" >Artwork</label><br />
+                    <input type="url" name="art_img" id="art_img" value={art_img} onChange={e => this.setState({art_img: e.target.value})} className="artwork newCharacter" pattern="https://.*" placeholder="https://example.com/exampleimg.jpg"/><br />
 
-                    <label htmlFor="antagonist" name="antagonist" className="newCharacter">Antagonist</label><br />
-                    <input type="text" id="antagonist" name="antagonist" className="newCharacter" value={antagonist} onChange={e => this.setState({antagonist: e.target.value})} placeholder="Argan Berevan"/><br />  
+                    <label htmlFor="strongest_bonds" name="bonds" className="newCharacter">Strongest Bonds</label><br />
+                    <textarea type="text" id="strongest_bonds" name="strongest_bonds" className="newCharacter" value={strongest_bonds} onChange={e => this.setState({strongest_bonds: e.target.value})}placeholder="Very close with her patron"/><br />  
                 </div>
                 <div className="formRight">
+                    <label htmlFor="antagonist" name="antagonist" className="newCharacter">Antagonist</label><br />
+                    <textarea type="text" id="antagonist" name="antagonist" className="newCharacter" value={antagonist} onChange={e => this.setState({antagonist: e.target.value})} placeholder="Argan Berevan"/><br />
+
                     <label htmlFor="appearance" className="newCharacter" >Appearance</label><br />
                     <textarea type="text" id="appearance" name="appearance" className="newCharacter" value={appearance} onChange={e => this.setState({appearance: e.target.value})} placeholder="e.g. blonde, curly hair, 6 ft tall, pointy ears, always sleepy eyes"></textarea><br />
 
@@ -99,9 +102,7 @@ export default class EditCharacterForm extends Component {
 
                     <label htmlFor="description" className="newCharacter" >General Description *</label><br />
                     <textarea name="general_desc" id="general_desc" value={general_desc} onChange={e => this.setState({general_desc: e.target.value})} className="newCharacter" placeholder="e.g. an elf with a dark secret" required></textarea><br />
-
-                    <label htmlFor="art_img" name="artwork" className="newCharacter" >Artwork</label><br />
-                    <input type="url" name="art_img" id="art_img" value={art_img} onChange={e => this.setState({art_img: e.target.value})} className="artwork newCharacter" pattern="https://.*" placeholder="https://example.com/exampleimg.jpg"/>
+                    
                 </div>
                 </div>
             <div className="characterButtons">

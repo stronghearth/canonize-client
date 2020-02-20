@@ -42,7 +42,7 @@ export default class LoginForm extends Component {
 
                 <label htmlFor="password">Password * </label>
                 <input type='password' id='password' name='password' required/><br />
-                <button type="submit">Log In to Your Canon</button>
+                <button type="submit" className="loginButton">Log In to Your Canon</button>
             </form>
         )
     }

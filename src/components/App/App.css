@@ -24,6 +24,7 @@ button {
   font-size: 20px;
   width: 95%;
   padding: 10px;
+  cursor: pointer;
 }
   
 main {
@@ -53,6 +54,9 @@ ul {
   padding: 0;
 }
 
+li, p.navLink {
+  cursor: pointer;
+}
 .successMessage {
   color: #219600
 }
