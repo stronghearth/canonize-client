@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 
+//context for state manipulation on the individual UserCanonPage route
 const CanonContext = React.createContext({
     error: null,
     characters: [],
@@ -47,6 +48,8 @@ export class CanonProvider extends Component {
         })
     }
 
+    //handles state conditions surrounding the Add Character Form component
+
     handleOpenAdd = (e) => {
         e.preventDefault()
         this.setState({
@@ -83,6 +86,8 @@ export class CanonProvider extends Component {
             addButtonHidden: false
         })
     }
+
+    //handles state conditions for what information is displayed in the UserCanonItem and UserExpandedItem components
 
     getInitialCharacterList = (res) => {
         this.setState({
@@ -128,6 +133,8 @@ export class CanonProvider extends Component {
         })
     }
 
+    //handles state conditions for displaying the EditCharacterForm component
+
     openEditForm = () => {
         this.setState({
             editFormOpen: true,
@@ -141,6 +148,9 @@ export class CanonProvider extends Component {
             editFormOpen: false
         })
     }
+
+    //handles state conditions for displaying postive feedback when an action by the user is completed succesfully
+    //positive feedback is cleared when user interacts with other components
 
     addSuccessMessage = () => {
         this.setState({
@@ -164,6 +174,7 @@ export class CanonProvider extends Component {
             successMessage: null
         })
     }
+
     render() {
         const value = {
             error: this.state.error,

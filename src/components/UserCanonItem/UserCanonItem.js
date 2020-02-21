@@ -14,6 +14,6 @@ export default class UserCanonItem extends Component {
                    onClick={() => {changeSelectedCharacter(character)}}>
                             {characterName}
                 </li>
-    })
+        })
     }
 }

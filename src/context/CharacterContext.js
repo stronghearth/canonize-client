@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import TokenService from '../services/token-service'
 
-
+//context for state manipulation concerning the LandingPage route and the LoginForm and RegistrationForm components
 const CharacterContext = React.createContext({
     openRegister: false,
     logInFormOpen: false,
@@ -24,15 +24,15 @@ const CharacterContext = React.createContext({
 
 export class CharacterProvider extends Component {
     state = {
-        loggedIn: TokenService.hasAuthToken(),
+        loggedIn: TokenService.hasAuthToken(), //validates if a user has a valid JWT token before myCanon page is loaded
         logInFormOpen: false,
         openRegister: false,
         registerDone: false,
         instructionsOpen: false,
     }
 
+    //guides users between pages when they have logged in or out
     changeToLoggedInState = () => {
-
         this.setState({
             loggedIn: true
         })
@@ -44,18 +44,21 @@ export class CharacterProvider extends Component {
         })
     }
 
+    //handles state conditions for About secion
     handleOpenInstructions = () => {
         this.setState({
             instructionsOpen: true
         })
     }
 
+    
     handleCloseInstructions = () => {
         this.setState({
             instructionsOpen: false
         })
     }
 
+    //handles state dynamics around rendering and closing the LoginForm component
     handleOpenLogInForm = () => {
         this.setState({
             logInFormOpen: true,
@@ -68,6 +71,8 @@ export class CharacterProvider extends Component {
             logInFormOpen: false
         })
     }
+
+    //Handles conditions around rendering and closing the RegistrationForm component and showing positive feedback on successfull registration
 
     handleOpenRegisterForm = () => {
         this.setState({
@@ -93,6 +98,7 @@ export class CharacterProvider extends Component {
             registerDone: false,
         })
     }
+
     render() {
         const value = {
             loggedIn: this.state.loggedIn,

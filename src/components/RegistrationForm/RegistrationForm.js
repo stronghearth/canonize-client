@@ -35,31 +35,6 @@ export default class RegistrationForm extends Component {
             })
     }
 
-    // passwordCheck = () => {
-    //     const password = this.state.password
-    //     const minimumLength = 8
-    //     if(password.length < minimumLength) {
-    //         this.setState ({
-    //             error: 'Password must be at least 8 characters long'
-    //         })
-    //     }
-    //     if(!password.hasNumber){
-    //         this.setState({
-    //             error: 'Password must contain a number'
-    //         })
-    //     }
-    //     if(password.hasUpperCase){
-    //         this.setState({
-    //             error: 'Password must have at least one uppercase letter'
-    //         })
-    //     }
-    //     if(password.length === 0) {(
-    //         this.setState({
-    //             error: null
-    //         })
-    //     )}
-    // }
-
     render() {
         const {error} = this.state
         return (

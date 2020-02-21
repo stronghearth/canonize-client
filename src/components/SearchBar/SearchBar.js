@@ -39,6 +39,7 @@ export default class SearchBar extends Component {
             error: null
         })
     }
+
     clearSearch = () => {
         const {getInitialCharacterList, errorCatch} = this.context
         CharacterApiService.getCharacters()
@@ -53,11 +54,11 @@ export default class SearchBar extends Component {
         const {error} = this.state
         return (
             <form id="searchBar" className="searchBar" onSubmit={this.handleSubmit}>
-                {error && <p className="errorMessage" onClick={this.clearError}>{error} X</p>}
-                <label htmlFor="search">Search: </label>
-                <input type="text" name="searchTerm" value={this.state.term} placeholder="Search by Name" id="characterfinder" onChange={(e) => this.setState({term: e.target.value})}></input>
+                {error && <p className="errorMessage" onClick={this.clearError}>{error}</p>}
+                    <label htmlFor="search">Search: </label>
+                    <input type="text" name="searchTerm" value={this.state.term} placeholder="Search by Name" id="characterfinder" onChange={(e) => this.setState({term: e.target.value})}></input>
                 <div className="characterButtons">
-                <button>Submit</button><button onClick={this.clearSearch}>Clear</button>
+                    <button>Submit</button><button onClick={this.clearSearch}>Clear</button>
                 </div>
             </form>
         )
