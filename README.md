@@ -2,7 +2,7 @@
 
 Live App on Zeit: [Canonize](https://canonize.now.sh/)
 
-![LandingPage](/src/images/Screenshot 1.png)
+<img src="src/images/Screenshot 1.png" alt="Canonize Landing Page">
 
 ## App Description
 
@@ -10,11 +10,11 @@ Description from About Link: Stories of all kinds start with those who live with
 
 Newly registered/logged in canonize users will land on an empty page with a link to an Add Character form, once a few characters are added, a list of characters to the right emerges with the latest character showing in an expanded view to the left. 
 
-![UserCanonPage](/src/images/Screenshot 2.png)
+<img src="src/images/Screenshot 2.png" alt="Canonize User Page">
 
 A user can select a name from the list on the right and change which character is shown in the expanded view. There is also a search feature in the client that can narrow the list of characters down by name. 
 
-![EditCharacter](/src/images/Screenshot 5.png)
+<img src="src/images/Screenshot 5.png" alt="Canonize User Edit">
 
 In the expanded character view, a user can access an Edit Character form, which once saved, the expanded character and the list of characters automatically update. A user can alsodelete a character from their record within the expanded character view.
 
