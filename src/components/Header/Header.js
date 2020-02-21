@@ -20,6 +20,12 @@ export default class Header extends Component {
     handleRegisterClick = () => {
         this.context.handleOpenRegisterForm()
     }
+
+    handleAboutClick = () => {
+        this.context.handleOpenInstructions()
+        this.context.handleCloseRegisterForm()
+        this.context.handleCloseLoginForm()
+    }
     
     closeForms= () => {
        if (this.context.logInFormOpen) {
@@ -51,6 +57,10 @@ export default class Header extends Component {
     renderLoginLink () {
         return (
         <div className ="loginRegister">
+            <p className="navLink" 
+            onClick={this.handleAboutClick}>
+                About
+            </p>
             <p className="navLink"
                onClick={this.handleLoginClick}>
                 Log in

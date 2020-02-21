@@ -10,11 +10,12 @@ import './App.css';
 
 function App() {
   return (
-    <AppError>
+    
     <div className="App">
       <header className='App_header'>
         <Header />
       </header>
+      <AppError>
     <main>
       <Switch>
         <PublicOnlyRoute
@@ -28,10 +29,8 @@ function App() {
         />
       </Switch>
       </main>
-    </div>
-    
     </AppError>
-    
+    </div>
   );
 }
 

@@ -15,6 +15,12 @@ h1.canonize {
 .startButton, .registerButton, .loginButton, .instructionButton {
     width: unset;
 }
+
+.creditParagraph {
+    font-size: 12px;
+    font-family: 'Source Code Pro', monospace;
+    margin-top: 50px;
+}
 @media screen and (min-width: 800px) {
     .landingContainer {
         position: absolute;

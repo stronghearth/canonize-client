@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import LoginForm from '../../components/LoginForm/LoginForm'
 import RegistrationForm from '../../components/RegistrationForm/RegistrationForm';
 import CharacterContext from '../../context/CharacterContext';
+import AuthApiService from '../../services/auth-api-service';
+import TokenService from '../../services/token-service';
 import './LandingPage.css';
 
 export default class LandingPage extends Component {
@@ -25,12 +27,6 @@ export default class LandingPage extends Component {
         this.context.handleCloseInstructions()
     }
 
-    handleInstructionsClick = () => {
-        this.context.handleOpenInstructions()
-        this.context.handleCloseRegisterForm()
-        this.context.handleCloseLoginForm()
-    }
-
     renderRegisterForm = () => {
         return (
             <RegistrationForm onRegistrationSuccess={this.handleRegisterSuccess}/>
@@ -49,12 +45,26 @@ export default class LandingPage extends Component {
         this.context.handleSuccessFullRegister()
     }
 
+    loginAsGuest = () => {
+        AuthApiService.postLogin({
+            user_name: 'canonize_guest',
+            password: 'lichrangergeronimomimic'
+        })
+        .then(res => {
+            TokenService.saveAuthToken(res.authToken)
+            this.handleLoginSuccess()
+          })
+          .catch(res => {
+            this.setState({error: res.error})
+          })
+    }
+
     handleLoginSuccess = () => {
         const { location, history } = this.props
         const destination = (location.state || {}).from || '/myCanon'
         history.push(destination)
         this.context.changeToLoggedInState()
-      }
+    }
 
     render() {
         const {logInFormOpen, openRegister, registerDone, instructionsOpen} = this.context
@@ -69,8 +79,8 @@ export default class LandingPage extends Component {
                         {instructionsOpen && !logInFormOpen && !registerDone &&! openRegister
                         ?this.renderDescription()
                         : <></>}
-                        <button className="instructionButton" onClick={this.handleInstructionsClick}>Instructions</button>
                         <button className="startButton" onClick={this.handleStartClick}>Create Your Canon</button>
+                        <button className="startButton" onClick={this.loginAsGuest}>Log In as Guest</button>
                     </section>
                     <section className="forms">
                         {openRegister && !logInFormOpen && !registerDone
@@ -83,7 +93,8 @@ export default class LandingPage extends Component {
                         ? <><h3>Success!</h3>{this.renderLogInForm()}</>
                         :<></>}
                     </section>
-                    
+                <p className="creditParagraph">Developed by <a href="https://github.com/stronghearth" target="_blank" rel="noopener noreferrer">Stronghearth</a> || Runes by <a href="https://www.youtube.com/channel/UC1fGtanJKO7Yv0o6ESqEDiw" target="_blank" rel="noopener noreferrer">Impulsive Artistry</a></p>
+                
                 </div>
                 </>
     }
