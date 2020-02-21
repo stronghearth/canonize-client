@@ -16,7 +16,7 @@ A user can select a name from the list on the right and change which character i
 
 <img src="src/images/Screenshot 5.png" alt="Canonize User Edit">
 
-In the expanded character view, a user can access an Edit Character form, which once saved, the expanded character and the list of characters automatically update. A user can alsodelete a character from their record within the expanded character view.
+In the expanded character view, a user can access an Edit Character form, which once saved, the expanded character and the list of characters automatically update. A user can also delete a character from their record within the expanded character view.
 
 ## Application Stack
 
@@ -25,3 +25,9 @@ Front-end: React, CSS3
 Back-end: Express, Knex, PostgreSQL
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## Related Links
+
+Link to Canonize API repo: (https://github.com/stronghearth/canonize-server)
+
+

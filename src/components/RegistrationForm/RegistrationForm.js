@@ -10,7 +10,9 @@ export default class RegistrationForm extends Component {
 
     static contextType = CharacterContext
 
-    state= {error: null};
+    state= {
+        error: null,
+    };
 
     handleSumbit = e => {
         e.preventDefault()
@@ -33,6 +35,31 @@ export default class RegistrationForm extends Component {
             })
     }
 
+    // passwordCheck = () => {
+    //     const password = this.state.password
+    //     const minimumLength = 8
+    //     if(password.length < minimumLength) {
+    //         this.setState ({
+    //             error: 'Password must be at least 8 characters long'
+    //         })
+    //     }
+    //     if(!password.hasNumber){
+    //         this.setState({
+    //             error: 'Password must contain a number'
+    //         })
+    //     }
+    //     if(password.hasUpperCase){
+    //         this.setState({
+    //             error: 'Password must have at least one uppercase letter'
+    //         })
+    //     }
+    //     if(password.length === 0) {(
+    //         this.setState({
+    //             error: null
+    //         })
+    //     )}
+    // }
+
     render() {
         const {error} = this.state
         return (
@@ -48,7 +75,7 @@ export default class RegistrationForm extends Component {
                 <input name='user_name' type='text' required id='user_name'/><br />
 
                 <label htmlFor='password'>Password: * </label>
-                <input name='password' type='password' required id='password'/><br />
+                <input name='password' type='password' required id='password' /><br />
                 <button type='Submit' className="registerButton">Register</button>
             </form>
         )
