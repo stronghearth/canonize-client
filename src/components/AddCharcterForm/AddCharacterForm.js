@@ -37,43 +37,43 @@ export default class AddCharacterForm extends Component {
         return <>
             {successMessage && <p className="successMessage">{successMessage}</p>}
             <form className="newCharacterForm" onSubmit={this.handleSubmit}>
-                {error && <p>{error}</p>}
+                {error && <p className="errorMessage">{error}</p>}
             <legend>Add A New Character</legend>
             <div className="formFields">
-            <div className="formLeft">
-                <label htmlFor="characterName" className="newCharacter">Name *</label><br />
-                <input type="text" id="character_name" placeholder="Ellandra Berevan" name="character_name" className="newCharacter" required/><br />
+                <div className="formLeft">
+                    <label htmlFor="characterName" className="newCharacter">Name *</label><br />
+                    <input type="text" id="character_name" placeholder="Ellandra Berevan" name="character_name" className="newCharacter" required/><br />
 
-                <label htmlFor="age" className="newCharacter">Age</label><br />
-                <input type="text" id="age" name="age" className="newCharacter" placeholder="109"/><br />
+                    <label htmlFor="age" className="newCharacter">Age</label><br />
+                    <input type="text" id="age" name="age" className="newCharacter" placeholder="109"/><br />
 
-                <label htmlFor="gender" className="newCharacter">Gender</label><br />
-                <input type="text" if="gender" name="gender" className="newCharacter" placeholder="They/Them"/><br />
+                    <label htmlFor="gender" className="newCharacter">Gender</label><br />
+                    <input type="text" id="gender" name="gender" className="newCharacter" placeholder="They/Them"/><br />
 
-                <label htmlFor="art_img" name="artwork" className="newCharacter">Artwork</label><br />
-                <input type="url" name="art_img" id="art_img" className="artwork newCharacter" pattern="https://.*" placeholder="https://example.com/exampleimg.jpg"/><br />
+                    <label htmlFor="art_img" name="artwork" className="newCharacter">Artwork</label><br />
+                    <input type="url" name="art_img" id="art_img" className="artwork newCharacter" pattern="https://.*" placeholder="https://example.com/exampleimg.jpg"/><br />
 
-                <label htmlFor="strongest_bonds" name="bonds" className="newCharacter">Strongest Bonds</label><br />
-                <textarea type="text" id="strongest_bonds" name="strongest_bonds" className="newCharacter" placeholder="Very close with her patron"/><br />
+                    <label htmlFor="strongest_bonds" name="bonds" className="newCharacter">Strongest Bonds</label><br />
+                    <textarea type="text" id="strongest_bonds" name="strongest_bonds" className="newCharacter" placeholder="Very close with her patron"/><br />
+                </div>
+                <div className="formRight">
+                    <label htmlFor="antagonist" name="antagonist" className="newCharacter">Antagonist</label><br />
+                    <textarea type="text" id="antagonist" name="antagonist" className="newCharacter" placeholder="Argan Berevan"/><br />
+
+                    <label htmlFor="appearance" className="newCharacter">Appearance</label><br />
+                    <textarea type="text" id="appearance" name="appearance" className="newCharacter" placeholder="e.g. blonde, curly hair, 6 ft tall, pointy ears, always sleepy eyes"></textarea><br />
+
+                    <label htmlFor="mannerisms" className="newCharacter">Mannerisms</label><br />
+                    <textarea type="text" id="mannerisms" name="mannerisms" className="newCharacter" placeholder="e.g. obsessively writes down all their dreams in a notebook"></textarea><br />
+
+                    <label htmlFor="description" className="newCharacter">General Description *</label><br />
+                    <textarea name="general_desc" id="general_desc" className="newCharacter" placeholder="e.g. an elf with a dark secret" required></textarea><br />
+                </div>
             </div>
-            <div className="formRight">
-                <label htmlFor="antagonist" name="antagonist" className="newCharacter">Antagonist</label><br />
-                <textarea type="text" id="antagonist" name="antagonist" className="newCharacter" placeholder="Argan Berevan"/><br />
-
-                <label htmlFor="appearance" className="newCharacter">Appearance</label><br />
-                <textarea type="text" id="appearance" name="appearance" className="newCharacter" placeholder="e.g. blonde, curly hair, 6 ft tall, pointy ears, always sleepy eyes"></textarea><br />
-
-                <label htmlFor="mannerisms" className="newCharacter">Mannerisms</label><br />
-                <textarea type="text" id="mannerisms" name="mannerisms" className="newCharacter" placeholder="e.g. obsessively writes down all their dreams in a notebook"></textarea><br />
-
-                <label htmlFor="description" className="newCharacter">General Description *</label><br />
-                <textarea name="general_desc" id="general_desc" className="newCharacter" placeholder="e.g. an elf with a dark secret" required></textarea><br />
+            <div className="characterButtons">
+                <button className="addToCanonButton" type="submit">Add to Canon</button>
+                <button onClick={(e) => this.context.handleCloseAddButton(e)}>Close</button>
             </div>
-            </div>
-        <div className="characterButtons">
-        <button className="addToCanonButton" type="submit">Add to Canon</button>
-        <button onClick={(e) => this.context.handleCloseAddButton(e)}>Close</button>
-        </div>
         </form>
         </>
     }

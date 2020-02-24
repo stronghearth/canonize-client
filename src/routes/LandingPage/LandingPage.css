@@ -9,8 +9,12 @@ h1.canonize {
     font-family: 'Roboto Slab', serif;
     font-size: 45px;
 }
+
 .definition {
     font-size: 20px;
+}
+.tagline {
+    font-size: 15px;
 }
 .startButton, .registerButton, .loginButton, .instructionButton {
     width: unset;

@@ -74,6 +74,7 @@ export default class LandingPage extends Component {
                         <h1 className="canonize">Canonize (v)</h1>
                         <h3 className="pronounce">/ˈkanəˌnīz/</h3>
                         <p className="definition">to place in or regard as belonging to a canon of literary or artistic works</p>
+                        <p className="tagline">Build your own world one character at a time.</p>
                     </section>
                     <section className="canonizeDescription">
                         {instructionsOpen && !logInFormOpen && !registerDone &&! openRegister

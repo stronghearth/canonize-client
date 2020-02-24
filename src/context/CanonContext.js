@@ -3,8 +3,8 @@ import React, {Component} from 'react';
 //context for state manipulation on the individual UserCanonPage route
 const CanonContext = React.createContext({
     error: null,
-    characters: [],
-    character: {},
+    characters: [], //list of characters that are stored in user account
+    character: {}, //item in characters array that is selected to render in expanded view
     addFormOpen: false,
     successMessage: null,
     editFormOpen: false,

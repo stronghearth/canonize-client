@@ -7,13 +7,13 @@ import './index.css';
 import App from '../src/components/App/App';
 import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(   <BrowserRouter>
+ReactDOM.render(<BrowserRouter>
                     <CanonProvider>
-                            <CharacterProvider>
-                            <App />
-                            </CharacterProvider>
-                        </CanonProvider> 
-                    </BrowserRouter>
+                        <CharacterProvider>
+                        <App />
+                        </CharacterProvider>
+                    </CanonProvider> 
+                </BrowserRouter>
                 , document.getElementById('root'));
 
 

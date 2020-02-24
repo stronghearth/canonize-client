@@ -29,7 +29,7 @@ export default class UserCanonPage extends Component {
     }
     
     render() {
-        const { characters, handleOpenAdd, character, addButtonHidden } = this.context
+        const { characters, character, handleOpenAdd, addButtonHidden, addFormOpen } = this.context
         return <>
         <section>
             <h2 className="userGreeting">Welcome, Canonizer!</h2>
@@ -43,7 +43,7 @@ export default class UserCanonPage extends Component {
                 {addButtonHidden ? <></> : <button className="addButton" onClick={(e) => handleOpenAdd(e)}>Add Character</button>}
                 {this.renderCharacterForm()}
                 
-                {characters.length === 0 || this.context.addFormOpen ? <></> : 
+                {characters.length === 0 || addFormOpen ? <></> : 
                 <>
                     <h4>Characters in Your Canon</h4>
                     <p className="characterCount">{characters.length} character(s)</p>
