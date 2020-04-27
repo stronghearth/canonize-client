@@ -52,18 +52,18 @@ export default class LandingPage extends Component {
         })
         .then(res => {
             TokenService.saveAuthToken(res.authToken)
-            this.handleLoginSuccess()
+            this.handleLoginSuccess(res.authToken)
           })
           .catch(res => {
             this.setState({error: res.error})
           })
     }
 
-    handleLoginSuccess = () => {
+    handleLoginSuccess = (authToken) => {
         const { location, history } = this.props
         const destination = (location.state || {}).from || '/myCanon'
         history.push(destination)
-        this.context.changeToLoggedInState()
+        this.context.changeToLoggedInState(authToken)
     }
 
     render() {

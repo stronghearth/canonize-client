@@ -20,7 +20,7 @@ export default class UserCanonPage extends Component {
     }
 
     componentDidMount() {
-        const {getInitialCharacterList, errorCatch} = this.context
+       const {getInitialCharacterList, errorCatch} = this.context
        CharacterApiService.getCharacters()
             .then(res => {
                 getInitialCharacterList(res)
@@ -30,9 +30,10 @@ export default class UserCanonPage extends Component {
     
     render() {
         const { characters, character, handleOpenAdd, addButtonHidden, addFormOpen } = this.context
+        const {currentUser} = this.props
         return <>
         <section>
-            <h2 className="userGreeting">Welcome, Canonizer!</h2>
+            <h2 className="userGreeting">Welcome, {currentUser.full_name}!</h2>
         </section>
         <section className="canonSection">
             
