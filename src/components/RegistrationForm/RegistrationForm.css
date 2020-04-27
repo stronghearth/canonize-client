@@ -5,3 +5,6 @@ input {
     background-color: #FFFEFA;
 }
 
+.userFormLabel {
+    visibility: hidden;
+}
