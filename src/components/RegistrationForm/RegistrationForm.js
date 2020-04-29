@@ -44,13 +44,13 @@ export default class RegistrationForm extends Component {
                     {error && <p className='errorMessage'>{error}</p>}
                 </div>
                 <label className="userFormLabel" htmlFor='full_name'>Full Name</label>
-                <input name='full_name' type='text' required id='full_name' aria-label="Full Name" placeholder="Full Name"/><br />
+                <input name='full_name' type='text' required id='full_name' aria-label="Full Name" placeholder="Full Name"/>
 
                 <label className="userFormLabel" htmlFor='user_name'>Username</label>
-                <input name='user_name' type='text' required id='user_name' aria-label="Username" placeholder="Username"/><br />
+                <input name='user_name' type='text' required id='user_name' aria-label="Username" placeholder="Username"/>
 
                 <label className="userFormLabel" htmlFor='password'>Password</label>
-                <input name='password' type='password' required id='password' aria-label="Password" placeholder="Password"/><br />
+                <input name='password' type='password' required id='password' aria-label="Password" placeholder="Password"/>
                 <button type='Submit' className="registerButton">Register</button>
             </form>
         )

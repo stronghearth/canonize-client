@@ -38,11 +38,11 @@ export default class LoginForm extends Component {
                     {error && <p className='errorMessage'>{error}</p>}
                 </div>
                 <label className="userFormLabel" htmlFor='username'>Username</label>
-                <input type='text' id='username' name='user_name' aria-label="username" placeholder="Username" required/><br />
+                <input type='text' id='username' name='user_name' aria-label="username" placeholder="Username" required/>
 
                 <label className="userFormLabel" htmlFor="password">Password</label>
-                <input type='password' id='password' aria-label="password" placeholder="Password" name='password' required/><br />
-                <button type="submit" className="loginButton">Log In to Your Canon</button>
+                <input type='password' id='password' aria-label="password" placeholder="Password" name='password' required/>
+                <button type="submit" className="loginButton">Log In</button>
             </form>
         )
     }
