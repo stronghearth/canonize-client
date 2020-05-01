@@ -37,6 +37,7 @@ export default class RegistrationForm extends Component {
 
     render() {
         const {error} = this.state
+        const { handleCloseRegisterForm } = this.context
         return (
             <form className="registration" onSubmit={this.handleSumbit}>
                 <h3>Register</h3>
@@ -51,7 +52,10 @@ export default class RegistrationForm extends Component {
 
                 <label className="userFormLabel" htmlFor='password'>Password</label>
                 <input name='password' type='password' required id='password' aria-label="Password" placeholder="Password"/>
+                <div className="charcterButtons">
                 <button type='Submit' className="registerButton">Register</button>
+                <button type="cancel" onClick={e => handleCloseRegisterForm()} className="registerButton">Cancel</button>
+                </div>
             </form>
         )
     }

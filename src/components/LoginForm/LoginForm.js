@@ -29,6 +29,7 @@ export default class LoginForm extends Component {
 
     render() {
         const {error} = this.state
+        const {handleCloseLoginForm} = this.context
         return (
             <form className="login"
             onSubmit={this.handleSubmitJWTAuth}
@@ -42,7 +43,10 @@ export default class LoginForm extends Component {
 
                 <label className="userFormLabel" htmlFor="password">Password</label>
                 <input type='password' id='password' aria-label="password" placeholder="Password" name='password' required/>
+                <div className="characterButtons">
                 <button type="submit" className="loginButton">Log In</button>
+                <button type='cancel' onClick={e => handleCloseLoginForm()} className="loginButton">Cancel</button>
+                </div>
             </form>
         )
     }
