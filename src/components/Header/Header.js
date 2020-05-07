@@ -41,9 +41,11 @@ export default class Header extends Component {
     
 
     renderLogoutLink() {
+        const {user} = this.context
         return (
             <>
             <div className="loginRegister">
+                <p className="userName">{user.username}</p>
                 <a className="navLink"
                 onClick={this.handleLogoutClick}
                 href='/'>

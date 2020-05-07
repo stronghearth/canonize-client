@@ -20,7 +20,7 @@ export default class LoginForm extends Component {
           user_name.value = ''
           password.value= ''
           TokenService.saveAuthToken(res.authToken)
-          this.props.onLoginSuccess()
+          this.props.onLoginSuccess(res.authToken)
         })
         .catch(res => {
           this.setState({error: res.error})
@@ -29,6 +29,7 @@ export default class LoginForm extends Component {
 
     render() {
         const {error} = this.state
+        const {handleCloseLoginForm} = this.context
         return (
             <form className="login"
             onSubmit={this.handleSubmitJWTAuth}
@@ -37,12 +38,15 @@ export default class LoginForm extends Component {
                 <div role='alert'>
                     {error && <p className='errorMessage'>{error}</p>}
                 </div>
-                <label htmlFor='username'>Username * </label>
-                <input type='text' id='username' name='user_name' required/><br />
+                <label className="userFormLabel" htmlFor='username'>Username</label>
+                <input type='text' id='username' name='user_name' aria-label="username" placeholder="Username" required/>
 
-                <label htmlFor="password">Password * </label>
-                <input type='password' id='password' name='password' required/><br />
-                <button type="submit" className="loginButton">Log In to Your Canon</button>
+                <label className="userFormLabel" htmlFor="password">Password</label>
+                <input type='password' id='password' aria-label="password" placeholder="Password" name='password' required/>
+                <div className="characterButtons">
+                <button type="submit" className="loginButton">Log In</button>
+                <button type='cancel' onClick={e => handleCloseLoginForm()} className="loginButton">Cancel</button>
+                </div>
             </form>
         )
     }

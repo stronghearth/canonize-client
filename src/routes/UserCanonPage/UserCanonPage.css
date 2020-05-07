@@ -1,3 +1,19 @@
+.loadingSection {
+    font-family: 'Roboto Slab', serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 125px auto;
+}
+
+.ohNo {
+    padding-top: 25px;
+    margin: 20px;
+    font-family: 'Roboto Slab', serif;
+    line-height: 2.0em;
+}
+
 .selectedCharacter {
     border-style: solid;
     border-color: darkgray;
@@ -14,6 +30,7 @@
 .addButton {
     padding: 20px;
     margin-bottom: 15px;
+    width: 50%;
 }
 
 button:hover {
@@ -31,6 +48,9 @@ textarea {
 }
 
 @media screen and (min-width: 800px) {
+    .loadingSection {
+        margin: 175px auto;
+    }
     .canonSection{
         display: flex;
         flex-direction: row;

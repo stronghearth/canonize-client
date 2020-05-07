@@ -37,21 +37,25 @@ export default class RegistrationForm extends Component {
 
     render() {
         const {error} = this.state
+        const { handleCloseRegisterForm } = this.context
         return (
             <form className="registration" onSubmit={this.handleSumbit}>
                 <h3>Register</h3>
                 <div role='alert'>
                     {error && <p className='errorMessage'>{error}</p>}
                 </div>
-                <label htmlFor='full_name'>Full Name: * </label>
-                <input name='full_name' type='text' required id='full_name'/><br />
+                <label className="userFormLabel" htmlFor='full_name'>Full Name</label>
+                <input name='full_name' type='text' required id='full_name' aria-label="Full Name" placeholder="Full Name"/>
 
-                <label htmlFor='user_name'>Username: * </label>
-                <input name='user_name' type='text' required id='user_name'/><br />
+                <label className="userFormLabel" htmlFor='user_name'>Username</label>
+                <input name='user_name' type='text' required id='user_name' aria-label="Username" placeholder="Username"/>
 
-                <label htmlFor='password'>Password: * </label>
-                <input name='password' type='password' required id='password' /><br />
+                <label className="userFormLabel" htmlFor='password'>Password</label>
+                <input name='password' type='password' required id='password' aria-label="Password" placeholder="Password"/>
+                <div className="charcterButtons">
                 <button type='Submit' className="registerButton">Register</button>
+                <button type="cancel" onClick={e => handleCloseRegisterForm()} className="registerButton">Cancel</button>
+                </div>
             </form>
         )
     }

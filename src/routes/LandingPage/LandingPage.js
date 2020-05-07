@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import FadeIn from 'react-fade-in'
 import LoginForm from '../../components/LoginForm/LoginForm'
 import RegistrationForm from '../../components/RegistrationForm/RegistrationForm';
 import CharacterContext from '../../context/CharacterContext';
@@ -17,8 +18,9 @@ export default class LandingPage extends Component {
     static contextType = CharacterContext;
 
     renderLogInForm = () => {
-        return (
+        return (<FadeIn>
             <LoginForm onLoginSuccess={this.handleLoginSuccess} history={this.props.history}/>
+            </FadeIn>
         )
     }
 
@@ -28,15 +30,17 @@ export default class LandingPage extends Component {
     }
 
     renderRegisterForm = () => {
-        return (
+        return (<FadeIn>
             <RegistrationForm onRegistrationSuccess={this.handleRegisterSuccess}/>
+            </FadeIn>
         )
     }
 
     renderDescription = () => {
-        return (<>
+        return (<><FadeIn>
             <p>Stories of all kinds start with those who live within your world. When you register with Canonize, you can make a record of all the characters who live in your story, whether they each have a full profile or just exist in a brief note. Once many characters become a part of your Canon, you can easily find individuals and expand your notes on them if you wish. Canonize is a great tool for fiction writers and tabletop role-playing game masters alike.</p>
             <h3>The magic of Canonize begins with you and your ideas.</h3>
+            </FadeIn>
             </>
         )
     }
@@ -52,18 +56,18 @@ export default class LandingPage extends Component {
         })
         .then(res => {
             TokenService.saveAuthToken(res.authToken)
-            this.handleLoginSuccess()
+            this.handleLoginSuccess(res.authToken)
           })
           .catch(res => {
             this.setState({error: res.error})
           })
     }
 
-    handleLoginSuccess = () => {
+    handleLoginSuccess = (authToken) => {
         const { location, history } = this.props
         const destination = (location.state || {}).from || '/myCanon'
         history.push(destination)
-        this.context.changeToLoggedInState()
+        this.context.changeToLoggedInState(authToken)
     }
 
     render() {
@@ -76,13 +80,18 @@ export default class LandingPage extends Component {
                         <p className="definition">to place in or regard as belonging to a canon of literary or artistic works</p>
                         <p className="tagline">Build your own world one character at a time.</p>
                     </section>
+                    
                     <section className="canonizeDescription">
-                        {instructionsOpen && !logInFormOpen && !registerDone &&! openRegister
+                    
+                        {instructionsOpen && !logInFormOpen && !registerDone && !openRegister
                         ?this.renderDescription()
                         : <></>}
+
                         <button className="startButton" onClick={this.handleStartClick}>Create Your Canon</button>
                         <button className="startButton" onClick={this.loginAsGuest}>Log In as Guest</button>
                     </section>
+                    
+                    
                     <section className="forms">
                         {openRegister && !logInFormOpen && !registerDone
                         ? this.renderRegisterForm()

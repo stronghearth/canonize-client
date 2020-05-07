@@ -26,3 +26,11 @@
     padding: 10px;
     margin-top: 15px;
 }
+
+.userName {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding: 10px;
+    margin-top: 15px;
+}
