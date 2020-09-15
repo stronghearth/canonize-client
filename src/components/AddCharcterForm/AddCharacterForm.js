@@ -38,7 +38,7 @@ export default class AddCharacterForm extends Component {
             {successMessage && <p className="successMessage">{successMessage}</p>}
             <form className="newCharacterForm" onSubmit={this.handleSubmit}>
                 {error && <p className="errorMessage">{error}</p>}
-            <legend>Add A New Character</legend>
+            <legend>Add A Character</legend>
             <div className="formFields">
                 <div className="formLeft">
                     <label htmlFor="characterName" className="newCharacter">Name *</label><br />
